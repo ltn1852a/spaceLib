@@ -16,7 +16,7 @@ import javax.persistence.Id;
  * @author yannl
  */
 @Entity
-public class HistoriqueRevision implements Serializable {
+public class HistoRevision implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,10 +41,10 @@ public class HistoriqueRevision implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof HistoriqueRevision)) {
+        if (!(object instanceof HistoRevision)) {
             return false;
         }
-        HistoriqueRevision other = (HistoriqueRevision) object;
+        HistoRevision other = (HistoRevision) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

@@ -6,10 +6,14 @@
 package com.j2e.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -22,6 +26,33 @@ public class Quai implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @ManyToOne
+    private Station station;
+
+    public Station getStation() {
+        return station;
+    }
+
+    public void setStation(Station station) {
+        this.station = station;
+    }
+
+    public Navette getNavette() {
+        return navette;
+    }
+
+    public void setNavette(Navette navette) {
+        this.navette = navette;
+    }
+
+    public Quai(Station station) {
+        this.station = station;
+        this.navette =null;
+    }
+    
+    @OneToOne
+    private Navette navette;
 
     public Long getId() {
         return id;

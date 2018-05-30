@@ -6,10 +6,14 @@
 package com.j2e.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -22,9 +26,57 @@ public class Station implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Localisation location;
 
+    @ManyToOne
+    private List<Voyage> voyage;
+
+    public List<Voyage> getVoyage() {
+        return voyage;
+    }
+
+    public void setVoyage(List<Voyage> voyage) {
+        this.voyage = voyage;
+    }
+    
+    public Localisation getLocation() {
+        return location;
+    }
+
+    public void setLocation(Localisation location) {
+        this.location = location;
+    }
+
+    public List<Quai> getQuais() {
+        return quais;
+    }
+
+    public void setQuais(List<Quai> quais) {
+        this.quais = quais;
+    }
+
+    public List<Mecanicien> getMecaniciens() {
+        return mecaniciens;
+    }
+
+    public void setMecaniciens(List<Mecanicien> mecaniciens) {
+        this.mecaniciens = mecaniciens;
+    }
+    
+    @OneToMany
+    private List<Quai> quais;
+    
+     @OneToMany
+    private List<Mecanicien> mecaniciens;
+     
     public Long getId() {
         return id;
+    }
+
+    public Station(List<Quai> quais, List<Mecanicien> mecaniciens, Localisation loc) {
+        this.quais = new ArrayList<Quai>();
+        this.mecaniciens = new ArrayList<Mecanicien>();
+        this.location= loc;
     }
 
     public void setId(Long id) {

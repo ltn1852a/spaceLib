@@ -6,10 +6,14 @@
 package com.j2e.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -22,6 +26,37 @@ public class Mecanicien implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String pseudo;
+    private String mdp;
+
+    @ManyToOne
+    private Station station;
+    
+    @OneToMany
+    private List<HistoRevision> revisions;
+
+    public Mecanicien(String pseudo, String mdp, Station s) {
+        this.pseudo = pseudo;
+        this.mdp = mdp;
+        this.revisions = new ArrayList<HistoRevision>();
+        this.station = s;
+    }
+    
+    public String getPseudo() {
+        return pseudo;
+    }
+
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
+    }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
 
     public Long getId() {
         return id;
