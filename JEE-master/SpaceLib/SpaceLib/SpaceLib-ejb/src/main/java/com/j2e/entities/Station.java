@@ -6,9 +6,11 @@
 package com.j2e.entities;
 
 
+import com.j2e.business.Localisation;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +33,10 @@ public class Station implements Serializable {
 
     @ManyToOne
     private List<Voyage> voyage;
+
+    public Station(Map<Integer, Integer> quais, Localisation loc) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public List<Voyage> getVoyage() {
         return voyage;

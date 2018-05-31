@@ -5,7 +5,9 @@
  */
 package com.j2e.repositories;
 
+import com.j2e.business.Localisation;
 import com.j2e.entities.Station;
+import java.util.Map;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,4 +31,8 @@ public class StationFacade extends AbstractFacade<Station> implements StationFac
         super(Station.class);
     }
     
+    public void créerStation(Map<Integer,Integer> quais, Localisation loc ){
+        Station s = new Station(quais,loc);
+        this.create(s);
+    }
 }

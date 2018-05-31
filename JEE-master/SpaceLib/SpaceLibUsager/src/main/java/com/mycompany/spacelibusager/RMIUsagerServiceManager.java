@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.j2e.services;
+package com.mycompany.spacelibusager;
 
 /**
  *
  * @author maha-
  */
-class VoyageAllreadyFinishedException extends Exception {
+public class RMIUsagerServiceManager {
     
 }

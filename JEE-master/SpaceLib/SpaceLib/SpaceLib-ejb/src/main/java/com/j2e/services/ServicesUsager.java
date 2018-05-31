@@ -5,6 +5,7 @@
  */
 package com.j2e.services;
 
+import com.j2e.exceptions.VoyageAllreadyFinishedException;
 import com.j2e.exceptions.PwdIncorrectException;
 import com.j2e.exceptions.VoyageNotFoundException;
 import com.j2e.exceptions.userNotFoundException;
@@ -40,4 +41,9 @@ public class ServicesUsager implements ServicesUsagerRemote {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public void réserverVoyage(int idVoyage) throws VoyageNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

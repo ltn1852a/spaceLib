@@ -76,6 +76,14 @@ public class Voyage implements Serializable {
    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Navette navette;
 
+    public List<HistoVoyage> getHistoVoyage() {
+        return histoVoyage;
+    }
+
+    public void setHistoVoyage(List<HistoVoyage> histoVoyage) {
+        this.histoVoyage = histoVoyage;
+    }
+
    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Station stationDepart;
    
