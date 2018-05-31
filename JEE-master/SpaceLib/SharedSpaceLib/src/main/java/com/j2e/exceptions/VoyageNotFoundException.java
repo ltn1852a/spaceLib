@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.j2e.business;
-
-import javax.ejb.Remote;
+package com.j2e.exceptions;
 
 /**
  *
  * @author maha-
  */
-@Remote
-public interface GestionStationRemote {
+public class VoyageNotFoundException extends Exception{
     
 }

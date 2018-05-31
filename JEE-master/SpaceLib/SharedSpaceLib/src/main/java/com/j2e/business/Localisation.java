@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spacelibshared;
+package com.j2e.business;
 
 /**
  *
- * @author yannl
+ * @author maha-
  */
 public class Localisation {
-    private float x;
+        private float x;
     private float y;
 
     public Localisation(float x, float y) {
@@ -34,5 +34,5 @@ public class Localisation {
         this.y = y;
     }
     
-    
+   
 }

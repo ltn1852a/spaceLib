@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.j2e.business;
-
-import javax.ejb.Local;
+package com.j2e.exceptions;
 
 /**
  *
  * @author maha-
  */
-@Local
-public interface GestionVoyageLocal {
-    
+public class PwdIncorrectException extends Exception{
+    public PwdIncorrectException(){
+		
+	}
+
 }

@@ -5,15 +5,15 @@
  */
 package com.j2e.business;
 
-import javax.ejb.Stateless;
+
+import java.util.Map;
+import javax.ejb.Remote;
 
 /**
  *
  * @author maha-
  */
-@Stateless
-public class GestionStation implements GestionStationRemote {
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+@Remote
+public interface GestionSpaceLibRemote {
+    public void créerStation(Map<Integer,Integer> quais, Localisation loc );
 }
