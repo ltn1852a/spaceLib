@@ -27,6 +27,8 @@ public interface HistoVoyageFacadeLocal {
     List<HistoVoyage> findAll();
 
     List<HistoVoyage> findRange(int[] range);
+    
+    List<com.j2e.business.HistoVoyage> findByUsager(Long idUsager);
 
     int count();
     

@@ -6,6 +6,8 @@
 package com.j2e.business;
 
 import com.j2e.exceptions.PwdIncorrectException;
+import com.j2e.exceptions.VoyageAlreadyFinishedException;
+import com.j2e.exceptions.VoyageNotFoundException;
 import com.j2e.exceptions.userNotFoundException;
 import java.util.List;
 import javax.ejb.Remote;
@@ -17,8 +19,9 @@ import javax.ejb.Remote;
 @Remote
 public interface GestionVoyageRemote {
    public void réserverVoyage(int idUsaager, int nbVoyages, int idStationDepart, int idstationArriv );
-   public List<Integer> consulterHistoVoyage(int idUsager);
+
    public Long identifierUsager(String pseudo, String mdp)throws userNotFoundException, PwdIncorrectException;
    public void créerCompte(String pseudo, String mdp) throws userNotFoundException, PwdIncorrectException;
-    
+   public List<HistoVoyage> consulterHistoVoyage(Long idUsager);
+   public void finaliserVoyage(Long idVoyage)throws VoyageNotFoundException, VoyageAlreadyFinishedException;
 }

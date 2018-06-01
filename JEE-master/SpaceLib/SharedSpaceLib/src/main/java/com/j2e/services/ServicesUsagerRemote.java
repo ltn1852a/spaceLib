@@ -6,7 +6,7 @@
 package com.j2e.services;
 
 
-import com.j2e.exceptions.VoyageAllreadyFinishedException;
+import com.j2e.exceptions.VoyageAlreadyFinishedException;
 import com.j2e.exceptions.PwdIncorrectException;
 import com.j2e.exceptions.VoyageNotFoundException;
 import com.j2e.exceptions.userNotFoundException;
@@ -21,7 +21,8 @@ import javax.ejb.Remote;
 public interface ServicesUsagerRemote {
     public void identifierUsager(String pseudo, String mdp);
     public void créerCompte(String pseudo, String mdp) throws userNotFoundException, PwdIncorrectException;
-    public void finaliserVoyage(int idVoyage) throws VoyageNotFoundException, VoyageAllreadyFinishedException;
-    public List<Integer> consulterHistVoyage(int idVoyage) throws VoyageNotFoundException;
     public void réserverVoyage(Long idUsager,int nbVoyage, Long stationDepart, Long stationArriv)throws VoyageNotFoundException;
+    public void finaliserVoyage(Long idVoyage) throws VoyageNotFoundException, VoyageAlreadyFinishedException;
+    public List<com.j2e.business.HistoVoyage> consulterHistVoyage(Long idVoyage) throws VoyageNotFoundException;
+   
 }

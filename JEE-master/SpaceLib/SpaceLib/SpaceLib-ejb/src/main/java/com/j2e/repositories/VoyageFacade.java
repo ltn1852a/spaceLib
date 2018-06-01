@@ -5,10 +5,16 @@
  */
 package com.j2e.repositories;
 
+import com.j2e.entities.HistoVoyage;
+import com.j2e.entities.Reservation;
 import com.j2e.entities.Voyage;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -28,5 +34,6 @@ public class VoyageFacade extends AbstractFacade<Voyage> implements VoyageFacade
     public VoyageFacade() {
         super(Voyage.class);
     }
+    
     
 }

@@ -7,9 +7,11 @@ package com.j2e.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -22,6 +24,32 @@ public class HistoVoyage implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Voyage voyage;
+
+    public Voyage getVoyage() {
+        return voyage;
+    }
+
+    public void setVoyage(Voyage voyage) {
+        this.voyage = voyage;
+    }
+
+    public HistoVoyage(Voyage voyage, String text) {
+        this.voyage = voyage;
+        this.text = text;
+    }
+    
+    public String getTSext() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+    
+    private String text;
 
     public Long getId() {
         return id;

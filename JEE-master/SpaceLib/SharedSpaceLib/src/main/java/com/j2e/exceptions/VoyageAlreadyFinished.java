@@ -9,6 +9,6 @@ package com.j2e.exceptions;
  *
  * @author maha-
  */
-public class VoyageAllreadyFinishedException extends Exception {
+public class VoyageAlreadyFinished extends Exception{
     
 }
