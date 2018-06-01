@@ -36,6 +36,8 @@ public class Reservation implements Serializable {
     private Long id;
     private Date dateResa;
     
+    private Long idUsager;
+    
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usager usager;
     
@@ -47,7 +49,8 @@ public class Reservation implements Serializable {
     }
 
     public Reservation(Usager usager, Voyage voyage) {
-        this.usager = usager;
+        this.usager = usager; 
+        this.idUsager=usager.getId();
         this.voyage = voyage;
         this.dateResa=new Date();
     }
