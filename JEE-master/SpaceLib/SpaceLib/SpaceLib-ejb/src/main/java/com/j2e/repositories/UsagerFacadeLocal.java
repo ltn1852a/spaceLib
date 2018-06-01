@@ -30,4 +30,10 @@ public interface UsagerFacadeLocal {
 
     int count();
     
+    Usager finByPseudoAndMdp(String pseudo, String mdp);
+    
+    Usager finByPseudo(String pseudo);
+
+    public void créerCompteUsager(String pseudo, String mdp);
+    
 }

@@ -6,7 +6,7 @@
 package com.j2e.services;
 
 
-import com.j2e.business.GestionVoyage;
+import com.j2e.business.GestionVoyageRemote;
 import com.j2e.exceptions.VoyageAllreadyFinishedException;
 import com.j2e.exceptions.PwdIncorrectException;
 import com.j2e.exceptions.VoyageNotFoundException;
@@ -25,12 +25,12 @@ import javax.ejb.Stateless;
 public class ServicesUsager implements ServicesUsagerRemote {
     
   @EJB
-    private GestionVoyage gVoyage;
+    private GestionVoyageRemote gestionVoyage;
   
     @Override
     public void identifierUsager(String pseudo, String mdp) {
       try {
-          gVoyage.identifierUsager(pseudo, mdp);
+          gestionVoyage.identifierUsager(pseudo, mdp);
       } catch (userNotFoundException ex) {
           Logger.getLogger(ServicesUsager.class.getName()).log(Level.SEVERE, null, ex);
       } catch (PwdIncorrectException ex) {
@@ -40,7 +40,7 @@ public class ServicesUsager implements ServicesUsagerRemote {
 
     @Override
     public void créerCompte(String pseudo, String mdp) throws userNotFoundException, PwdIncorrectException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        gestionVoyage.créerCompte(pseudo, mdp);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class ServicesUsager implements ServicesUsagerRemote {
     // "Insert Code > Add Business Method")
 
     @Override
-    public void réserverVoyage(int idVoyage) throws VoyageNotFoundException {
+    public void réserverVoyage(Long idUsager,int nbVoyage, Long stationDepart, Long stationArriv)throws VoyageNotFoundException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

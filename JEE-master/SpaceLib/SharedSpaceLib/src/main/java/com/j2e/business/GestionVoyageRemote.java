@@ -18,6 +18,7 @@ import javax.ejb.Remote;
 public interface GestionVoyageRemote {
    public void réserverVoyage(int idUsaager, int nbVoyages, int idStationDepart, int idstationArriv );
    public List<Integer> consulterHistoVoyage(int idUsager);
-   public int identifierUsager(String pseudo, String mdp)throws userNotFoundException, PwdIncorrectException;
+   public Long identifierUsager(String pseudo, String mdp)throws userNotFoundException, PwdIncorrectException;
+   public void créerCompte(String pseudo, String mdp) throws userNotFoundException, PwdIncorrectException;
     
 }

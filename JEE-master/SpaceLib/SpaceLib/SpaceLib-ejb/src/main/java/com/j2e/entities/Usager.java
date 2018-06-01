@@ -6,6 +6,7 @@
 package com.j2e.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +33,13 @@ public class Usager implements Serializable {
         return listReservation;
     }
 
+    
+    public Usager(String pseudo, String mdp){
+        this.pseudo=pseudo;
+        this.mdp= mdp;
+        this.listReservation = new ArrayList<Reservation>();
+    }
+    
     public void setListReservation(List<Reservation> listReservation) {
         this.listReservation = listReservation;
     }

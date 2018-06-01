@@ -23,5 +23,5 @@ public interface ServicesUsagerRemote {
     public void créerCompte(String pseudo, String mdp) throws userNotFoundException, PwdIncorrectException;
     public void finaliserVoyage(int idVoyage) throws VoyageNotFoundException, VoyageAllreadyFinishedException;
     public List<Integer> consulterHistVoyage(int idVoyage) throws VoyageNotFoundException;
-    public void réserverVoyage(int idVoyage)throws VoyageNotFoundException;
+    public void réserverVoyage(Long idUsager,int nbVoyage, Long stationDepart, Long stationArriv)throws VoyageNotFoundException;
 }
