@@ -6,6 +6,8 @@
 package com.j2e.business;
 
 import com.j2e.entities.HistoVoyage;
+import com.j2e.exceptions.PwdIncorrectException;
+import com.j2e.exceptions.userNotFoundException;
 import java.util.List;
 import javax.ejb.Stateless;
 
@@ -24,6 +26,11 @@ public class GestionVoyage implements GestionVoyageRemote {
 
     @Override
     public List<Integer> consulterHistoVoyage(int idUsager) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int identifierUsager(String pseudo, String mdp) throws userNotFoundException, PwdIncorrectException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

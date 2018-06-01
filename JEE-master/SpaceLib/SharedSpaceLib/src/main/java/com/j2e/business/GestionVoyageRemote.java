@@ -5,6 +5,8 @@
  */
 package com.j2e.business;
 
+import com.j2e.exceptions.PwdIncorrectException;
+import com.j2e.exceptions.userNotFoundException;
 import java.util.List;
 import javax.ejb.Remote;
 
@@ -16,5 +18,6 @@ import javax.ejb.Remote;
 public interface GestionVoyageRemote {
    public void réserverVoyage(int idUsaager, int nbVoyages, int idStationDepart, int idstationArriv );
    public List<Integer> consulterHistoVoyage(int idUsager);
+   public int identifierUsager(String pseudo, String mdp)throws userNotFoundException, PwdIncorrectException;
     
 }

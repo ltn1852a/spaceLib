@@ -5,11 +5,16 @@
  */
 package com.j2e.services;
 
+
+import com.j2e.business.GestionVoyage;
 import com.j2e.exceptions.VoyageAllreadyFinishedException;
 import com.j2e.exceptions.PwdIncorrectException;
 import com.j2e.exceptions.VoyageNotFoundException;
 import com.j2e.exceptions.userNotFoundException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -18,10 +23,19 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class ServicesUsager implements ServicesUsagerRemote {
-
+    
+  @EJB
+    private GestionVoyage gVoyage;
+  
     @Override
     public void identifierUsager(String pseudo, String mdp) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      try {
+          gVoyage.identifierUsager(pseudo, mdp);
+      } catch (userNotFoundException ex) {
+          Logger.getLogger(ServicesUsager.class.getName()).log(Level.SEVERE, null, ex);
+      } catch (PwdIncorrectException ex) {
+          Logger.getLogger(ServicesUsager.class.getName()).log(Level.SEVERE, null, ex);
+      }
     }
 
     @Override
