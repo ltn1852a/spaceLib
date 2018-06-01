@@ -6,7 +6,10 @@
 package com.j2e.business;
 
 import com.j2e.entities.HistoVoyage;
+import com.j2e.repositories.VoyageFacade;
+import com.j2e.repositories.VoyageFacadeLocal;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -15,12 +18,20 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class GestionVoyage implements GestionVoyageRemote {
-
+    
+    @EJB
+    private VoyageFacadeLocal voyageFacade;
+    
+    @EJB
+    private Histo
     @Override
     public void réserverVoyage(int idUsaager, int nbVoyages, int idStationDepart, int idstationArriv) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    @Override
+    public void finaliserVoyage(int idVoyage){
+        
+    }
 
     @Override
     public List<Integer> consulterHistoVoyage(int idUsager) {

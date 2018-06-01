@@ -16,5 +16,6 @@ import javax.ejb.Remote;
 public interface GestionVoyageRemote {
    public void réserverVoyage(int idUsaager, int nbVoyages, int idStationDepart, int idstationArriv );
    public List<Integer> consulterHistoVoyage(int idUsager);
+   public void finaliserVoyage(int idVoyage);
     
 }
