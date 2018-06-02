@@ -6,6 +6,7 @@
 package com.j2e.services;
 
 import com.j2e.business.GestionSpaceLib;
+import com.j2e.business.GestionSpaceLibRemote;
 import com.j2e.business.Localisation;
 import com.j2e.exceptions.StationNotFoundException;
 import java.util.Map;
@@ -20,7 +21,7 @@ import javax.ejb.Stateless;
 public class ServicesAdmin implements ServicesAdminRemote {
 
   @EJB
-    private GestionSpaceLib gSpaceLib;
+    private GestionSpaceLibRemote gSpaceLib;
   
     @Override
     public void créerStation(Map<Integer, Integer> quais, Localisation loc) {
