@@ -9,6 +9,7 @@ import com.j2e.business.GestionSpaceLib;
 import com.j2e.business.GestionSpaceLibRemote;
 import com.j2e.business.Localisation;
 import com.j2e.exceptions.StationNotFoundException;
+import java.util.List;
 import java.util.Map;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -24,20 +25,8 @@ public class ServicesAdmin implements ServicesAdminRemote {
     private GestionSpaceLibRemote gSpaceLib;
   
     @Override
-    public void créerStation(Map<Integer, Integer> quais, Localisation loc) {
-        gSpaceLib.créerStation(quais, loc);
+    public void créerStation(List<Integer> nbPlaces, Localisation loc) {
+        gSpaceLib.créerStation(nbPlaces, loc);
     }
 
-    @Override
-    public void créerNavette(int nbPlaces, int idStation) throws StationNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-
-    @Override
-    public void créerQuai(int idStation) throws StationNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
