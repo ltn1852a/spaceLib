@@ -69,9 +69,134 @@ public class Station implements Serializable {
 
         
     public static int tempsTrajet(Station sDepart, Station sArriv){
-       return 0; 
+            int temps=0;
+            if(sDepart.getNomStation().equals("Terre")){
+                switch(sArriv.getNomStation()){    
+                     case "Terre":
+                         break;
+                     case "Dimidium":
+                         temps=2;
+                         break;
+                     case "Arion":
+                         temps=6;
+                         break;
+                     case "Brahe":
+                         temps=2;
+                         break;
+                     case "Amateru":
+                         temps=4;
+                         break;
+                     case "Tadmor":
+                         temps=2;
+                         break;
+                }
+            }
+             if(sDepart.getNomStation().equals("Dimidium")){
+                switch(sArriv.getNomStation()){    
+                     case "Terre":
+                         temps=2;
+                         break;
+                     case "Dimidium":
+                         break;
+                     case "Arion":
+                         temps=6;
+                     case "Brahe":
+                         temps=4;
+                     case "Amateru":
+                         temps=6;
+                     case "Tadmor":
+                         temps=4;
+                }
+            }
+             if(sDepart.getNomStation().equals("Arion")){
+                switch(sArriv.getNomStation()){    
+                 case "Terre":
+                     temps=6;
+                     break;
+                 case "Dimidium":
+                     temps=6;
+                     break;
+                 case "Arion":
+                     break;
+                 case "Brahe":
+                     temps=6;
+                     break;
+                 case "Amateru":
+                     temps=8;
+                     break;
+                 case "Tadmor":
+                     temps=6;
+                     break;
+                 }
+            }
+            
+                if(sDepart.getNomStation().equals("Brahe")){
+                switch(sArriv.getNomStation()){    
+                 case "Terre":
+                     temps=2;
+                     break;
+                 case "Dimidium":
+                     temps=4;
+                     break;
+                 case "Arion":
+                     temps=6;
+                     break;
+                 case "Brahe":
+                     break;
+                 case "Amateru":
+                     temps=4;
+                     break;
+                 case "Tadmor":
+                     temps=2;
+                     break;
+                }
+            }
+                if(sDepart.getNomStation().equals("Amateru")){
+                switch(sArriv.getNomStation()){    
+                 case "Terre":
+                     temps=4;
+                     break;
+                 case "Dimidium":
+                     temps=6;
+                     break;
+                 case "Arion":
+                     temps=8;
+                     break;
+                 case "Brahe":
+                     temps=4;
+                     break;
+                 case "Amateru":
+                     break;
+                 case "Tadmor":
+                     temps=2;
+                     break;
+            }
+        }
+                
+        if(sDepart.getNomStation().equals("Tadmor")){
+                switch(sArriv.getNomStation()){    
+                 case "Terre":
+                     temps=2;
+                     break;
+                 case "Dimidium":
+                     temps=4;
+                     break;
+                 case "Arion":
+                     temps=6;
+                     break;
+                 case "Brahe":
+                     temps=2;
+                     break;
+                 case "Amateru":
+                     temps=2;
+                     break;
+                 case "Tadmor":
+                     break;
+            }
+        }
+        return temps;
     }
-    
+              
     public void setQuais(List<Quai> quais) {
         this.quais = quais;
     }
