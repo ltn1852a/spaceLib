@@ -5,8 +5,10 @@
  */
 package com.j2e.business;
 
+import com.j2e.entities.Station;
 import com.j2e.exceptions.StationNotFoundException;
 import com.j2e.repositories.StationFacade;
+import com.j2e.repositories.StationFacadeLocal;
 import java.util.Map;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -19,11 +21,11 @@ import javax.ejb.Stateless;
 public class GestionSpaceLib implements GestionSpaceLibRemote {
 
     @EJB
-    private StationFacade statF;
+    private StationFacadeLocal stationFacade;
     
     @Override
     public void créerStation(Map<Integer, Integer> quais, Localisation loc) {
-        statF.créerStation(quais, loc);
+        stationFacade.create(new Station(quais,loc));
     }
 
     @Override

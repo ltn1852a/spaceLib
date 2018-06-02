@@ -29,6 +29,15 @@ public class Navette implements Serializable {
     private int nbPLaces;
     private boolean disponible;
 
+    public int getNbVoyages() {
+        return nbVoyages;
+    }
+
+    public void setNbVoyages(int nbVoyages) {
+        this.nbVoyages = nbVoyages;
+    }
+    private int nbVoyages;
+
     @OneToMany
     private List<Voyage> voyages;
     
@@ -47,6 +56,7 @@ public class Navette implements Serializable {
         this.disponible=true;
         this.histoNavettes = new ArrayList<HistoNavette>();
         this.histoRevision= new ArrayList<HistoRevision>();
+        this.nbVoyages=0;
         
     }
 
