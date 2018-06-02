@@ -6,7 +6,11 @@
 package com.j2e.repositories;
 
 import com.j2e.business.Localisation;
+import com.j2e.entities.Navette;
+import com.j2e.entities.Quai;
 import com.j2e.entities.Station;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -30,9 +34,11 @@ public class StationFacade extends AbstractFacade<Station> implements StationFac
     public StationFacade() {
         super(Station.class);
     }
-    
-    public void créerStation(Map<Integer,Integer> quais, Localisation loc ){
-        Station s = new Station(quais,loc);
+
+    public void créerStation(Map<Integer, Integer> quais, Localisation loc) {
+        Station s = new Station(quais, loc);
         this.create(s);
     }
+
 }
+

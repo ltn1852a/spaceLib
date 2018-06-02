@@ -6,6 +6,7 @@
 package com.j2e.entities;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,7 +30,7 @@ public class Voyage implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int nbPassager;
-    private Date dateDepart;
+    private SimpleDateFormat dateDepart;
     private Date dateArrivee;
     @OneToMany
     private List<Reservation> listReservation;
@@ -54,7 +55,7 @@ public class Voyage implements Serializable {
         return stationArrive;
     }
 
-    public Voyage(int nbPassager, Date dateDepart, Date dateArrivee, Navette navette, Station stationDepart, Station stationArrive) {
+    public Voyage(int nbPassager, SimpleDateFormat dateDepart, Date dateArrivee, Navette navette, Station stationDepart, Station stationArrive) {
         this.nbPassager = nbPassager;
         this.dateDepart = dateDepart;
         this.dateArrivee = dateArrivee;
@@ -114,11 +115,11 @@ public class Voyage implements Serializable {
         this.nbPassager = nbPassager;
     }
 
-    public Date getDateDepart() {
+    public SimpleDateFormat getDateDepart() {
         return dateDepart;
     }
 
-    public void setDateDepart(Date dateDepart) {
+    public void setDateDepart(SimpleDateFormat dateDepart) {
         this.dateDepart = dateDepart;
     }
 

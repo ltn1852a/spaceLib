@@ -5,6 +5,7 @@
  */
 package com.j2e.repositories;
 
+import com.j2e.entities.Navette;
 import com.j2e.entities.Station;
 import java.util.List;
 import javax.ejb.Local;
@@ -29,5 +30,6 @@ public interface StationFacadeLocal {
     List<Station> findRange(int[] range);
 
     int count();
+    
     
 }

@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -37,6 +38,9 @@ public class Navette implements Serializable {
     
     @OneToMany
     private List<HistoRevision> histoRevision;
+    
+    @OneToOne
+    private Quai quai;
 
     public Navette(int nbPLaces) {
         this.nbPLaces = nbPLaces;
@@ -80,6 +84,14 @@ public class Navette implements Serializable {
 
     public boolean isDisponible() {
         return disponible;
+    }
+
+    public Quai getQuai() {
+        return quai;
+    }
+
+    public void setQuai(Quai quai) {
+        this.quai = quai;
     }
 
     public void setDisponible(boolean diponible) {

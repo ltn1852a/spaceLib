@@ -31,10 +31,10 @@ public class UsagerFacade extends AbstractFacade<Usager> implements UsagerFacade
     public UsagerFacade() {
         super(Usager.class);
     }
-    
+
     @Override
     public Usager finByPseudoAndMdp(String pseudo, String mdp) {
-                CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Usager> cq = cb.createQuery(Usager.class);
         Root<Usager> root = cq.from(Usager.class);
         cq.where(
@@ -43,29 +43,27 @@ public class UsagerFacade extends AbstractFacade<Usager> implements UsagerFacade
                         cb.equal(cb.upper(root.get("mdp").as(String.class)), mdp.toUpperCase())
                 )
         );
-       
+
         return getEntityManager().createQuery(cq).getSingleResult();
     }
 
     @Override
     public Usager finByPseudo(String pseudo) {
-                      CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Usager> cq = cb.createQuery(Usager.class);
         Root<Usager> root = cq.from(Usager.class);
         cq.where(
-                cb.equal(cb.upper(root.get("pseudo").as(String.class)), pseudo.toUpperCase())                
+                cb.equal(cb.upper(root.get("pseudo").as(String.class)), pseudo.toUpperCase())
         );
-       
-        return getEntityManager().createQuery(cq).getSingleResult(); 
+
+        return getEntityManager().createQuery(cq).getSingleResult();
     }
 
     @Override
     public void créerCompteUsager(String pseudo, String mdp) {
-            Usager nouveauUsager = new Usager(pseudo, mdp);
-            this.create(nouveauUsager);
-            
+        Usager nouveauUsager = new Usager(pseudo, mdp);
+        this.create(nouveauUsager);
+
     }
 
- 
-    
 }
