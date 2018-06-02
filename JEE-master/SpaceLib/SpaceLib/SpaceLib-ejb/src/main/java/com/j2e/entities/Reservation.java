@@ -48,6 +48,14 @@ public class Reservation implements Serializable {
         return dateResa;
     }
 
+    public Voyage getVoyage() {
+        return voyage;
+    }
+
+    public void setVoyage(Voyage voyage) {
+        this.voyage = voyage;
+    }
+
     public Reservation(Usager usager, Voyage voyage) {
         this.usager = usager; 
         this.idUsager=usager.getId();
