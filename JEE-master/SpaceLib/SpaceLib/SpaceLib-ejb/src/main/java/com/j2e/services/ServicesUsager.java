@@ -14,6 +14,8 @@ import com.j2e.exceptions.VoyageAlreadyFinishedException;
 
 import com.j2e.exceptions.PwdIncorrectException;
 import com.j2e.exceptions.VoyageNotFoundException;
+import com.j2e.exceptions.navettesNotAvailableException;
+import com.j2e.exceptions.quaisNotAvailableException;
 import com.j2e.exceptions.userNotFoundException;
 import java.util.List;
 import java.util.logging.Level;
@@ -67,7 +69,9 @@ public class ServicesUsager implements ServicesUsagerRemote {
     // "Insert Code > Add Business Method")
 
     @Override
-    public void réserverVoyage(Long idUsager,int nbVoyage, Long stationDepart, Long stationArriv)throws VoyageNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void réserverVoyage(Long idUsager, int nbVoyage, Long stationDepart, Long stationArriv) throws navettesNotAvailableException, quaisNotAvailableException {
+        this.gestionVoyage.réserverVoyage(nbVoyage, nbVoyage, nbVoyage, nbVoyage);
     }
+
+
 }
