@@ -6,6 +6,8 @@
 package com.j2e.repositories;
 
 import com.j2e.business.Localisation;
+import com.j2e.entities.Navette;
+import com.j2e.entities.Quai;
 import com.j2e.entities.Station;
 import java.util.Iterator;
 import java.util.List;
@@ -32,13 +34,17 @@ public class StationFacade extends AbstractFacade<Station> implements StationFac
     public StationFacade() {
         super(Station.class);
     }
+
     
     public void créerStation(List<Integer> nbPlaces, Localisation loc ){
         for(Iterator it = nbPlaces.iterator(); it.hasNext();) {
-            Integer nbPlace = it.next(); 
+           // Integer nbPlace = it.next(); 
         }
         
-        Station s = new Station(nbPlaces,loc);
-        this.create(s);
+       // Station s = new Station(nbPlaces,loc);
+ 
+       // this.create(s);
     }
+
 }
+

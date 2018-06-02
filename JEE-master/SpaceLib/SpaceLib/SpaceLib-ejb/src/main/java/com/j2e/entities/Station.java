@@ -30,6 +30,15 @@ public class Station implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Localisation location;
+    private String nomStation;
+
+    public String getNomStation() {
+        return nomStation;
+    }
+
+    public void setNomStation(String nomStation) {
+        this.nomStation = nomStation;
+    }
 
     @ManyToOne
     private List<Voyage> voyage;
@@ -58,6 +67,11 @@ public class Station implements Serializable {
         return quais;
     }
 
+        
+    public static int tempsTrajet(Station sDepart, Station sArriv){
+       return 0; 
+    }
+    
     public void setQuais(List<Quai> quais) {
         this.quais = quais;
     }

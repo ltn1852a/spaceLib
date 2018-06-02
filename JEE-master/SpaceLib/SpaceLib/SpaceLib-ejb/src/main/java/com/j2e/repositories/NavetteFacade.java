@@ -28,5 +28,10 @@ public class NavetteFacade extends AbstractFacade<Navette> implements NavetteFac
     public NavetteFacade() {
         super(Navette.class);
     }
+
+    @Override
+    public Navette findNavetteDispo(int nbVoyagers) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

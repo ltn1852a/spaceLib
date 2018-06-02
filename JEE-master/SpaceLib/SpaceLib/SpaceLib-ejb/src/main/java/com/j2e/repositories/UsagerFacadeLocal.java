@@ -36,4 +36,6 @@ public interface UsagerFacadeLocal {
 
     public void créerCompteUsager(String pseudo, String mdp);
     
+    
+    
 }
