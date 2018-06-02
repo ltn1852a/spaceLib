@@ -7,7 +7,8 @@ package com.j2e.services;
 
 import com.j2e.exceptions.StationNotFoundException;
 import com.j2e.business.Localisation;
-import java.util.Map;
+import java.util.List;
+import java.util.Set;
 import javax.ejb.Remote;
 
 /**
@@ -16,8 +17,5 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface ServicesAdminRemote {
-    public void créerStation(Map<Integer,Integer> quais, Localisation loc );
-    public void créerNavette(int nbPlaces, int idStation)throws StationNotFoundException;
-    public void créerQuai(int idStation)throws StationNotFoundException;
-    
+    public void créerStation(List<Integer> nbPlaces, Localisation loc);
 }
