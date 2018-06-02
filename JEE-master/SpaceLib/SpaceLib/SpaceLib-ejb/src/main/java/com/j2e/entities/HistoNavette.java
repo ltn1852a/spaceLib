@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -31,6 +32,31 @@ public class HistoNavette implements Serializable {
         this.id = id;
     }
 
+    public HistoNavette(Navette navette, String text) {
+        this.navette = navette;
+        this.text = text;
+    }
+
+    public Navette getNavette() {
+        return navette;
+    }
+
+    public void setNavette(Navette navette) {
+        this.navette = navette;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+    @ManyToOne
+    private Navette navette;
+    
+    private String text;
+    
     @Override
     public int hashCode() {
         int hash = 0;

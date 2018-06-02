@@ -7,6 +7,8 @@ package com.j2e.business;
 
 
 
+import com.j2e.entities.HistoNavette;
+import com.j2e.entities.Navette;
 import com.j2e.entities.Usager;
 
 
@@ -19,8 +21,10 @@ import com.j2e.exceptions.PwdIncorrectException;
 import com.j2e.exceptions.VoyageAlreadyFinishedException;
 import com.j2e.exceptions.VoyageNotFoundException;
 import com.j2e.exceptions.userNotFoundException;
+import com.j2e.repositories.HistoNavetteFacadeLocal;
 import com.j2e.repositories.UsagerFacadeLocal;
 import com.j2e.repositories.HistoVoyageFacadeLocal;
+import com.j2e.repositories.NavetteFacadeLocal;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -34,13 +38,18 @@ public class GestionVoyage implements GestionVoyageRemote {
 
     @EJB
     private UsagerFacadeLocal usagerFacade;
-
+    
+    @EJB
+    private NavetteFacadeLocal navetteFacade;
     
     @EJB
     private VoyageFacadeLocal voyageFacade;
     
     @EJB
     private HistoVoyageFacadeLocal histoFacade;
+    
+    @EJB
+    private HistoNavetteFacadeLocal histoNavette;
             
 
     @Override
@@ -63,6 +72,20 @@ public class GestionVoyage implements GestionVoyageRemote {
         //Changement d'etat et update bdd
         v.setEtat(Etat.Finalisé);
         this.voyageFacade.edit(v);
+        
+        //Créer Histo
+        final Navette n =v.getNavette();
+        this.histoNavette.create(new HistoNavette(n,"VoyageAchevé"));
+        this.histoFacade.create(new com.j2e.entities.HistoVoyage(v,"Finalisé"));
+        
+        //Rajouter +1 au nombre de voyages
+       n.setNbVoyages(n.getNbVoyages()+1);
+       if(n.getNbVoyages()==3){
+           n.setDisponible(false);
+       }
+       this.navetteFacade.edit(n);
+       
+        
     }
 
 
@@ -70,14 +93,14 @@ public class GestionVoyage implements GestionVoyageRemote {
     public List<com.j2e.business.HistoVoyage> consulterHistoVoyage(Long idUsager) {
       final List<com.j2e.business.HistoVoyage> histo;
         histo = this.histoFacade.findByUsager(idUsager);
-       return null;
+       return histo;
     }
 
     @Override
     public Long identifierUsager(String pseudo, String mdp) throws userNotFoundException, PwdIncorrectException {
 
         Usager u = usagerFacade.finByPseudo(pseudo);
-        if (u.equals(null)) {
+        if (u == null) {
             throw new userNotFoundException("User not found");
         } else {
             u = usagerFacade.finByPseudoAndMdp(pseudo, mdp);
