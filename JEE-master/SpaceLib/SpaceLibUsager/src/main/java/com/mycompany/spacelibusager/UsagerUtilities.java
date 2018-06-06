@@ -2,9 +2,9 @@ package com.mycompany.spacelibusager;
 
 import java.util.Scanner;
 
-public class UsagerCLI {
+public class UsagerUtilities {
     
-    private UsagerCLI() {
+    private UsagerUtilities() {
     }
     
     public static void afficherTitreSection(String titre){
