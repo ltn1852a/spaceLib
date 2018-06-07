@@ -43,6 +43,12 @@ public class Station implements Serializable {
     @ManyToOne
     private List<Voyage> voyage;
 
+        @OneToMany
+    private List<Quai> quais;
+    
+     @OneToMany
+    private List<Mecanicien> mecaniciens;
+     
     public Station(Map<Integer, Integer> quais, Localisation loc) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -200,6 +206,10 @@ public class Station implements Serializable {
     public void setQuais(List<Quai> quais) {
         this.quais = quais;
     }
+    
+    public void addQuai(Quai quai) {
+        this.quais.add(quai);
+    }
 
     public List<Mecanicien> getMecaniciens() {
         return mecaniciens;
@@ -209,11 +219,7 @@ public class Station implements Serializable {
         this.mecaniciens = mecaniciens;
     }
     
-    @OneToMany
-    private List<Quai> quais;
-    
-     @OneToMany
-    private List<Mecanicien> mecaniciens;
+
      
     public Long getId() {
         return id;

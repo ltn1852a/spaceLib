@@ -35,16 +35,5 @@ public class StationFacade extends AbstractFacade<Station> implements StationFac
         super(Station.class);
     }
 
-    
-    public void créerStation(List<Integer> nbPlaces, Localisation loc ){
-        for(Iterator it = nbPlaces.iterator(); it.hasNext();) {
-           // Integer nbPlace = it.next(); 
-        }
-        
-       // Station s = new Station(nbPlaces,loc);
- 
-       // this.create(s);
-    }
-
 }
 
