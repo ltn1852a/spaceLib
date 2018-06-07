@@ -7,4 +7,8 @@ public class userAlreadyExistsException extends Exception{
 		super();
 	}
 
+    public userAlreadyExistsException(String msg) {
+        super(msg);
+    }
+
 }
