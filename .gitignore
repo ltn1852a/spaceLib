@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+/JEE-master/SpaceLib/SpaceLib/SpaceLib-ejb/target/
+/JEE-master/SpaceLib/SpaceLib/SpaceLib-web/target/
+/JEE-master/SpaceLib/SharedSpaceLib/target/
+/JEE-master/SpaceLib/SpaceLib/SpaceLib-ear/target/
+/JEE-master/SpaceLib/SpaceLibUsager/target/
+=======
 /JEE-master/SpaceLib/SpaceLibShared/build/
 /JEE-master/SpaceLib/SpaceLibShared/dist/
 /JEE-master/SpaceLib/SpaceLib/SpaceLib-ejb/target/
@@ -6,3 +13,4 @@
 /JEE-master/SpaceLib/SpaceLib/SpaceLib-web/target/
 /JEE-master/SpaceLib/SpaceLibAdmin/target/
 /JEE-master/SpaceLib/SpaceLib/SpaceLib-ear/target/
+>>>>>>> 01cd7bbb41d8b47cf09e38b93b8012db6440506a
