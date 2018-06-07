@@ -6,14 +6,14 @@ public class Launcher {
     
     
     public static void main(String[] args){
-       /* try{
+       try{
             RMIUsagerServiceManager rmiMgr = new RMIUsagerServiceManager();
-            UsagerCLI cli = new UsagerCLI(rmiMgr.getUsagerRemoteSvc());
-          //  cli.run();
+            UsagerCli cli = new UsagerCli(rmiMgr.getUsagerRemoteSvc());
+            cli.run();
         }catch(NamingException ex){
             System.err.println("Erreur d'initialisation RMI : " + ex.getMessage());
             System.err.println(ex.getExplanation());
         }
-        */
+        
     }
 }

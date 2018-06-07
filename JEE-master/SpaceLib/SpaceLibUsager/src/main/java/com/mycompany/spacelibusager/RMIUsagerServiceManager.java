@@ -41,8 +41,12 @@ public class RMIUsagerServiceManager {
         this.usagerRemoteSvc = (ServicesUsagerRemote) this.namingContext.lookup(SERVICES_USAGER_EJB_URI);
     }
         
-            public ServicesUsagerRemote getCollabRemoteSvc() {
+        public ServicesUsagerRemote getCollabRemoteSvc() {
         return usagerRemoteSvc;
+    }
+
+    ServicesUsagerRemote getUsagerRemoteSvc() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
