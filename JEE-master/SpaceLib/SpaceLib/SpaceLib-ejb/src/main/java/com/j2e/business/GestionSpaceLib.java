@@ -4,32 +4,28 @@
  * and open the template in the editor.
  */
 package com.j2e.business;
+
 import com.j2e.entities.Mecanicien;
 import com.j2e.entities.Quai;
-import com.j2e.entities.Station;
 import com.j2e.entities.Navette;
 
 import com.j2e.entities.Station;
-import com.j2e.exceptions.StationNotFoundException;
 import com.j2e.repositories.NavetteFacadeLocal;
 import com.j2e.repositories.QuaiFacadeLocal;
-import com.j2e.repositories.StationFacade;
 import com.j2e.repositories.StationFacadeLocal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-
 /**
  *
  * @author maha-
  */
 @Stateless
-public class GestionSpaceLib implements GestionSpaceLibRemote {
+public class GestionSpaceLib implements GestionSpaceLibLocal {
 
-    @EJB
+        @EJB
     private StationFacadeLocal stationFacade;
     
     @EJB
@@ -39,7 +35,7 @@ public class GestionSpaceLib implements GestionSpaceLibRemote {
     private NavetteFacadeLocal navetteFacade;
 
     @Override
-    public void créerStation(List<Integer> nbPlaces, Localisation loc) {
+    public void créerStation(List<Integer> nbPlaces, String loc) {
         Station s = new Station(new ArrayList<Quai>(),new ArrayList<Mecanicien>(),loc);
         stationFacade.create(s);
         Iterator<Integer> nbPlacesIterator = nbPlaces.iterator();

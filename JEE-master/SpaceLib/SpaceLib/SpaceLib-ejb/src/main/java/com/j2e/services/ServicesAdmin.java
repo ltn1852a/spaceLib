@@ -6,7 +6,7 @@
 package com.j2e.services;
 
 import com.j2e.business.GestionSpaceLib;
-import com.j2e.business.GestionSpaceLibRemote;
+import com.j2e.business.GestionSpaceLibLocal;
 import com.j2e.business.Localisation;
 import com.j2e.exceptions.StationNotFoundException;
 import java.util.List;
@@ -22,10 +22,10 @@ import javax.ejb.Stateless;
 public class ServicesAdmin implements ServicesAdminRemote {
 
   @EJB
-    private GestionSpaceLibRemote gSpaceLib;
+    private GestionSpaceLibLocal gSpaceLib;
   
     @Override
-    public void créerStation(List<Integer> nbPlaces, Localisation loc) {
+    public void créerStation(List<Integer> nbPlaces, String loc) {
         gSpaceLib.créerStation(nbPlaces, loc);
     }
 

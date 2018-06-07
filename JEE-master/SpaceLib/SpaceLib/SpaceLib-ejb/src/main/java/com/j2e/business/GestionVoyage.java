@@ -5,9 +5,6 @@
  */
 package com.j2e.business;
 
-
-
-
 import com.j2e.entities.Quai;
 import com.j2e.entities.Station;
 import com.j2e.entities.HistoNavette;
@@ -44,9 +41,9 @@ import javax.ejb.Stateless;
  * @author maha-
  */
 @Stateless
-public class GestionVoyage implements GestionVoyageRemote {
+public class GestionVoyage implements GestionVoyageLocal {
 
-    @EJB
+        @EJB
     private UsagerFacadeLocal usagerFacade;
     
     @EJB

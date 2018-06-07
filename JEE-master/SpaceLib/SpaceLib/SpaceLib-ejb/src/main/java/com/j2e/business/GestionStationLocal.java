@@ -5,6 +5,8 @@
  */
 package com.j2e.business;
 
+import com.j2e.exceptions.StationNotFoundException;
+import com.j2e.exceptions.userNotFoundException;
 import javax.ejb.Local;
 
 /**
@@ -15,5 +17,6 @@ import javax.ejb.Local;
 public interface GestionStationLocal {
     
     public void consulterListeNavetteAReviser(Integer idMecanicien);
+    public void renseignerStationRattachement(Long idMecanicien, Long idStation)throws userNotFoundException, StationNotFoundException;
     
 }

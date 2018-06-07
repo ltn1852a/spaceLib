@@ -7,8 +7,8 @@ package com.j2e.services;
 
 
 
-import com.j2e.business.GestionSpaceLibRemote;
-import com.j2e.business.GestionVoyageRemote;
+import com.j2e.business.GestionSpaceLibLocal;
+import com.j2e.business.GestionVoyageLocal;
 
 import com.j2e.exceptions.VoyageAlreadyFinishedException;
 
@@ -33,10 +33,10 @@ public class ServicesUsager implements ServicesUsagerRemote {
     
 
     @EJB
-    private GestionSpaceLibRemote gestionSpaceLib;
+    private GestionSpaceLibLocal gestionSpaceLib;
     
     @EJB
-    private GestionVoyageRemote gestionVoyage;
+    private GestionVoyageLocal gestionVoyage;
     
  
 
