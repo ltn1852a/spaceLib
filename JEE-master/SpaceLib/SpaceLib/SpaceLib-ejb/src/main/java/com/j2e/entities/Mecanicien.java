@@ -65,6 +65,10 @@ public class Mecanicien implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public Station getStation() {
+        return station;
+    }
 
     @Override
     public int hashCode() {
