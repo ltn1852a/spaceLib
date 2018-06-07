@@ -201,7 +201,9 @@ public class GestionVoyage implements GestionVoyageRemote {
     public void créerCompte(String pseudo, String mdp) throws userAlreadyExistsException {
         Usager u = usagerFacade.finByPseudo(pseudo);
         if (u == null) {
+
             throw new userAlreadyExistsException("AlreadyExist");
+
         } else {
             usagerFacade.créerCompteUsager(pseudo, mdp);
         }

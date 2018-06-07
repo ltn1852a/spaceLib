@@ -58,6 +58,17 @@ public class HistoVoyage implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public String toStringHistoVoyage(){
+        String s ="[";
+        String dateDepart = this.voyage.getDateDepart().toString();
+        String dateArriv = this.voyage.getDateArrivee().toString();
+        String stationDepart = this.voyage.getStationDepart().getNomStation();
+        String stationArrivee = this.voyage.getStationArrive().getNomStation();
+        
+        s += "Voyage effectué au départ de la station"+ stationDepart +"à la date "+dateDepart+" dont la destination est "+stationArrivee+ "atteinte à la date "+dateArriv+"]";
+        return s;
+    }
 
     @Override
     public int hashCode() {

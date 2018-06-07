@@ -5,6 +5,7 @@
  */
 package com.mycompany.spacelibusager;
 
+import com.j2e.business.HistoVoyage;
 import com.j2e.exceptions.PwdIncorrectException;
 import com.j2e.exceptions.VoyageAlreadyFinishedException;
 import com.j2e.exceptions.VoyageNotFoundException;
@@ -161,9 +162,18 @@ public class UsagerCli {
         
         try{
            ArrayList hist = (ArrayList) services.consulterHistVoyage(idUser);
+           afficherHistorique(hist);
         }catch(VoyageNotFoundException ex){            
             System.out.println("Erreur : " + ex.getMessage()); 
         }
         
     }
+    
+    private void afficherHistorique(ArrayList<HistoVoyage> HistoVoyage){
+        for(int i=0; i< HistoVoyage.size();i++){
+            System.out.println(HistoVoyage.get(i).toStringHistoVoyage());
+        }
+    }
+    
+    
 }

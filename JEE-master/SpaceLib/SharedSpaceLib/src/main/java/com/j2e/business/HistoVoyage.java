@@ -35,4 +35,8 @@ public class HistoVoyage {
     
     private String text;
 
+        public String toStringHistoVoyage(){
+        
+       return this.voyage.toString() + this.getTSext();
+    }
 }

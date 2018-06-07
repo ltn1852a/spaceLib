@@ -4,11 +4,19 @@
  * and open the template in the editor.
  */
 package com.j2e.business;
+import com.j2e.entities.Mecanicien;
+import com.j2e.entities.Quai;
+import com.j2e.entities.Station;
+import com.j2e.entities.Navette;
 
 import com.j2e.entities.Station;
 import com.j2e.exceptions.StationNotFoundException;
+import com.j2e.repositories.NavetteFacadeLocal;
+import com.j2e.repositories.QuaiFacadeLocal;
 import com.j2e.repositories.StationFacade;
 import com.j2e.repositories.StationFacadeLocal;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import javax.ejb.EJB;
@@ -23,9 +31,37 @@ public class GestionSpaceLib implements GestionSpaceLibRemote {
 
     @EJB
     private StationFacadeLocal stationFacade;
+    
+    @EJB
+    private QuaiFacadeLocal quaiFacade;
+    
+    @EJB
+    private NavetteFacadeLocal navetteFacade;
 
     @Override
     public void créerStation(List<Integer> nbPlaces, Localisation loc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Station s = new Station(new ArrayList<Quai>(),new ArrayList<Mecanicien>(),loc);
+        stationFacade.create(s);
+        Iterator<Integer> nbPlacesIterator = nbPlaces.iterator();
+        while (nbPlacesIterator.hasNext()) {
+            Integer nbPlace = nbPlacesIterator.next();
+            Navette n = new Navette(nbPlace);
+            navetteFacade.create(n);
+            Quai q1 = new Quai(s);
+            quaiFacade.create(q1);
+            q1.setNavette(n);
+            quaiFacade.edit(q1);
+            n.setQuai(q1);
+            navetteFacade.edit(n);
+            Quai q2 = new Quai(s);
+            quaiFacade.create(q2);
+            s.addQuai(q1);
+            stationFacade.edit(s);
+            s.addQuai(q2);
+            stationFacade.edit(s);
+        }
+
+        
+        
     }
 }
