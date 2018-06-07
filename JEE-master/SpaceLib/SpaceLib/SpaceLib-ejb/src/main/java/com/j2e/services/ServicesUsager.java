@@ -16,6 +16,7 @@ import com.j2e.exceptions.PwdIncorrectException;
 import com.j2e.exceptions.VoyageNotFoundException;
 import com.j2e.exceptions.navettesNotAvailableException;
 import com.j2e.exceptions.quaisNotAvailableException;
+import com.j2e.exceptions.userAlreadyExistsException;
 import com.j2e.exceptions.userNotFoundException;
 import java.util.List;
 import java.util.logging.Level;
@@ -51,7 +52,7 @@ public class ServicesUsager implements ServicesUsagerRemote {
     }
 
     @Override
-    public void créerCompte(String pseudo, String mdp) throws userNotFoundException, PwdIncorrectException {
+    public void créerCompte(String pseudo, String mdp) throws userAlreadyExistsException {
         gestionVoyage.créerCompte(pseudo, mdp);
     }
 

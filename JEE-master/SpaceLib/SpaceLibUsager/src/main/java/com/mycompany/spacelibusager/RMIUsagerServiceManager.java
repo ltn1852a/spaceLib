@@ -6,6 +6,7 @@
 package com.mycompany.spacelibusager;
 
 import com.j2e.services.ServicesUsagerRemote;
+import java.util.Properties;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -18,18 +19,30 @@ public class RMIUsagerServiceManager {
     private final static String GLASSFISH_ORB_PORT = "3700";
     
     //lien 
-    private final static String SERVICES_COLL_EJB_URI = "lien a recuperer du lancement du ear";
+    private final static String SERVICES_USAGER_EJB_URI = "lien a recuperer du lancement du ear";
     
     private InitialContext namingContext;
     private ServicesUsagerRemote usagerRemoteSvc;
     
         public RMIUsagerServiceManager() throws NamingException {
-        //this.initJndi();
+        this.initJndi();
         this.retrieveRemoteServicesUsagers();
     }
         
-            private void retrieveRemoteServicesUsagers() throws NamingException {
-        this.usagerRemoteSvc = (ServicesUsagerRemote) this.namingContext.lookup(SERVICES_COLL_EJB_URI);
+        private void initJndi() throws NamingException {
+        Properties jNDIProperties = new Properties();
+        jNDIProperties.setProperty("java.naming.factory.initial", "com.sun.enterprise.naming.SerialInitContextFactory");
+        jNDIProperties.setProperty("org.omg.CORBA.ORBInitialHost", GLASSFISH_ORB_HOST);
+        jNDIProperties.setProperty("org.omg.CORBA.ORBInitialPort", GLASSFISH_ORB_PORT);
+        this.namingContext = new InitialContext(jNDIProperties);
+    } 
+        
+        private void retrieveRemoteServicesUsagers() throws NamingException {
+        this.usagerRemoteSvc = (ServicesUsagerRemote) this.namingContext.lookup(SERVICES_USAGER_EJB_URI);
+    }
+        
+            public ServicesUsagerRemote getCollabRemoteSvc() {
+        return usagerRemoteSvc;
     }
     
 }
