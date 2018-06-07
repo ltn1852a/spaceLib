@@ -24,6 +24,7 @@ import com.j2e.exceptions.VoyageAlreadyFinishedException;
 import com.j2e.exceptions.VoyageNotFoundException;
 import com.j2e.exceptions.navettesNotAvailableException;
 import com.j2e.exceptions.quaisNotAvailableException;
+import com.j2e.exceptions.userAlreadyExistsException;
 import com.j2e.exceptions.userNotFoundException;
 import com.j2e.repositories.HistoNavetteFacadeLocal;
 import com.j2e.repositories.UsagerFacadeLocal;
@@ -197,10 +198,10 @@ public class GestionVoyage implements GestionVoyageRemote {
     }
 
     @Override
-    public void créerCompte(String pseudo, String mdp) throws userNotFoundException, PwdIncorrectException {
+    public void créerCompte(String pseudo, String mdp) throws userAlreadyExistsException {
         Usager u = usagerFacade.finByPseudo(pseudo);
         if (u == null) {
-            throw new userNotFoundException("User not found");
+            throw new userAlreadyExistsException("User not found");
         } else {
             usagerFacade.créerCompteUsager(pseudo, mdp);
         }
