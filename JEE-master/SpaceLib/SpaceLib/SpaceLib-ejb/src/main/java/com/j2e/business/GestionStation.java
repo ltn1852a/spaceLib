@@ -31,6 +31,7 @@ public class GestionStation implements GestionStationLocal {
     }
 
 
+    @Override
     public void renseignerStationRattachement(Long idMecanicien, Long idStation)throws userNotFoundException, StationNotFoundException{
         //find mecanicien as a user
         Mecanicien m = mecaFacade.find(idMecanicien);

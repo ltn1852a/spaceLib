@@ -12,9 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -29,8 +31,12 @@ public class Station implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
     private String location;
     private String nomStation;
+
+    public Station() {
+    }
 
     public String getNomStation() {
         return nomStation;
@@ -40,13 +46,13 @@ public class Station implements Serializable {
         this.nomStation = nomStation;
     }
 
-    @ManyToOne
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "stationDepart")
     private List<Voyage> voyage;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "station")
     private List<Quai> quais;
     
-     @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "station")
     private List<Mecanicien> mecaniciens;
      
     public Station(Map<Integer, Integer> quais, Localisation loc) {

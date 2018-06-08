@@ -9,9 +9,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -29,6 +31,9 @@ public class Navette implements Serializable {
     private int nbPLaces;
     private boolean disponible;
 
+    public Navette() {
+    }
+
     public int getNbVoyages() {
         return nbVoyages;
     }
@@ -38,17 +43,19 @@ public class Navette implements Serializable {
     }
     private int nbVoyages;
 
-    @OneToMany
+  
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "navette")
     private List<Voyage> voyages;
     
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "navette")
     private List<HistoNavette> histoNavettes;
     
     
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "navette")
     private List<HistoRevision> histoRevision;
     
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ID_QUAI", nullable = false)
     private Quai quai;
 
     public Navette(int nbPLaces) {

@@ -7,9 +7,13 @@ package com.j2e.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -22,7 +26,39 @@ public class HistoRevision implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "ID_MECANICIEN", nullable = false)
+    public Mecanicien mecanicien;
+    
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "ID_NAVETTE", nullable = false)
+    public Navette navette;
 
+    public HistoRevision() {
+    }
+
+    public HistoRevision(Mecanicien mecanicien, Navette navette) {
+        this.mecanicien = mecanicien;
+        this.navette = navette;
+    }
+
+    public Mecanicien getMecanicien() {
+        return mecanicien;
+    }
+
+    public void setMecanicien(Mecanicien mecanicien) {
+        this.mecanicien = mecanicien;
+    }
+
+    public Navette getNavette() {
+        return navette;
+    }
+
+    public void setNavette(Navette navette) {
+        this.navette = navette;
+    }
+    
     public Long getId() {
         return id;
     }

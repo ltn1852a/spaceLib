@@ -32,7 +32,6 @@ public class UsagerCli {
     private final ServicesUsagerRemote services;
     private final Scanner scanner = new Scanner(System.in);
     private final DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY' à 'HH:mm");
-    private final NumberFormat soldeFormat = NumberFormat.getCurrencyInstance(Locale.FRANCE);
     
         public UsagerCli(ServicesUsagerRemote services) {
         this.services = services;

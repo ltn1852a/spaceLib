@@ -15,8 +15,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -31,9 +33,13 @@ public class Voyage implements Serializable {
     private Long id;
     private int nbPassager;
     private SimpleDateFormat dateDepart;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateArrivee;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "voyage")
     private List<Reservation> listReservation;
+
+    public Voyage() {
+    }
 
     public Navette getNavette() {
         return navette;
@@ -71,10 +77,11 @@ public class Voyage implements Serializable {
         this.stationArrive = stationArrive;
     }
     
-   @OneToMany
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "voyage")
     private List<HistoVoyage> histoVoyage;
    
-   @ManyToOne(optional = false, fetch = FetchType.LAZY)
+   @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "ID_NAVETTE", nullable = false)
     private Navette navette;
 
     public List<HistoVoyage> getHistoVoyage() {
@@ -85,10 +92,12 @@ public class Voyage implements Serializable {
         this.histoVoyage = histoVoyage;
     }
 
-   @ManyToOne(optional = false, fetch = FetchType.LAZY)
+   @ManyToOne(optional = false, fetch = FetchType.EAGER)
+   @JoinColumn(name = "ID_STATIONDEPART", nullable = false)
     private Station stationDepart;
    
-   @ManyToOne(optional = false, fetch = FetchType.LAZY)
+   @ManyToOne(optional = false, fetch = FetchType.EAGER)
+   @JoinColumn(name = "ID_STATIONARRIVE", nullable = false)
     private Station stationArrive;
    
     public List<Reservation> getListReservation() {

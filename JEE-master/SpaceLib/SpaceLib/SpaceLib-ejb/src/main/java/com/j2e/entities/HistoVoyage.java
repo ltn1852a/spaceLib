@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
@@ -25,8 +26,12 @@ public class HistoVoyage implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+   @ManyToOne(optional = false, fetch = FetchType.EAGER)
+   @JoinColumn(name = "ID_VOYAGE", nullable = false)
     private Voyage voyage;
+
+    public HistoVoyage() {
+    }
 
     public Voyage getVoyage() {
         return voyage;

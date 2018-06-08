@@ -19,7 +19,7 @@ public class RMIUsagerServiceManager {
     private final static String GLASSFISH_ORB_PORT = "3700";
     
     //lien 
-    private final static String SERVICES_USAGER_EJB_URI = "lien a recuperer du lancement du ear";
+    private final static String SERVICES_USAGER_EJB_URI = "java:global/SpaceLib-ear/SpaceLib-ejb-1.0-SNAPSHOT/ServicesUsager!com.j2e.services.ServicesUsagerRemote";
     
     private InitialContext namingContext;
     private ServicesUsagerRemote usagerRemoteSvc;

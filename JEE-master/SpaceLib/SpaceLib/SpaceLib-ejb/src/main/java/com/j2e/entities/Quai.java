@@ -8,9 +8,11 @@ package com.j2e.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -27,8 +29,12 @@ public class Quai implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @ManyToOne
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "ID_STATION", nullable = false)
     private Station station;
+
+    public Quai() {
+    }
 
     public Station getStation() {
         return station;
@@ -51,7 +57,7 @@ public class Quai implements Serializable {
         this.navette =null;
     }
     
-    @OneToOne
+   @OneToOne(fetch = FetchType.EAGER, mappedBy = "quai")
     private Navette navette;
 
     public Long getId() {

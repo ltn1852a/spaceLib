@@ -14,6 +14,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
@@ -38,11 +39,16 @@ public class Reservation implements Serializable {
     
     private Long idUsager;
     
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "ID_USAGER", nullable = false)
     private Usager usager;
     
-     @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "ID_VOYAGE", nullable = false)
     private Voyage voyage;
+
+    public Reservation() {
+    }
 
     public Date getDateResa() {
         return dateResa;

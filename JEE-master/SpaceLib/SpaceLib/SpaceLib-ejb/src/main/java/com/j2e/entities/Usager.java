@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,8 +27,11 @@ public class Usager implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "usager")
     private List<Reservation> listReservation;
+
+    public Usager() {
+    }
 
     public List<Reservation> getListReservation() {
         return listReservation;
