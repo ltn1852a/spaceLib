@@ -17,5 +17,5 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface ServicesAdminRemote {
-    public void créerStation(List<Integer> nbPlaces, Localisation loc);
+    public void créerStation(List<Integer> nbPlaces, String loc);
 }

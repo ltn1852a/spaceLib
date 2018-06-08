@@ -29,7 +29,7 @@ public class Station implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Localisation location;
+    private String location;
     private String nomStation;
 
     public String getNomStation() {
@@ -43,7 +43,7 @@ public class Station implements Serializable {
     @ManyToOne
     private List<Voyage> voyage;
 
-        @OneToMany
+    @OneToMany
     private List<Quai> quais;
     
      @OneToMany
@@ -61,11 +61,11 @@ public class Station implements Serializable {
         this.voyage = voyage;
     }
     
-    public Localisation getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(Localisation location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 
@@ -225,7 +225,7 @@ public class Station implements Serializable {
         return id;
     }
 
-    public Station(List<Quai> quais, List<Mecanicien> mecaniciens, Localisation loc) {
+    public Station(List<Quai> quais, List<Mecanicien> mecaniciens, String loc) {
         this.quais = new ArrayList<Quai>();
         this.mecaniciens = new ArrayList<Mecanicien>();
         this.location= loc;
