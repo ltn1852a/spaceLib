@@ -14,6 +14,11 @@ import javax.ejb.Stateless;
 @Stateless
 public class GestionStation implements GestionStationLocal {
 
+    @Override
+    public void consulterListeNavetteAReviser(Integer idMecanicien) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 }
