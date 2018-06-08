@@ -45,8 +45,8 @@ public class RMIUsagerServiceManager {
         return usagerRemoteSvc;
     }
 
-    ServicesUsagerRemote getUsagerRemoteSvc() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        public ServicesUsagerRemote getUsagerRemoteSvc() {
+           return usagerRemoteSvc;
+        }
     
 }
