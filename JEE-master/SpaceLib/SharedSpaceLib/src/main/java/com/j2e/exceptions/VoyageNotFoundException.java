@@ -10,5 +10,9 @@ package com.j2e.exceptions;
  * @author maha-
  */
 public class VoyageNotFoundException extends Exception{
+
+    public VoyageNotFoundException() {
+        super("voyage introuvable");
+    }
     
 }

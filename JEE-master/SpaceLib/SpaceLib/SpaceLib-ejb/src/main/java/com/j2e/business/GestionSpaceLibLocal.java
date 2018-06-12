@@ -5,6 +5,7 @@
  */
 package com.j2e.business;
 
+import com.j2e.entities.Station;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,5 +16,6 @@ import javax.ejb.Local;
 @Local
 public interface GestionSpaceLibLocal {
     public void créerStation(List<Integer> nbPlaces, String loc );
+    public List<Station> getSataions();
     
 }

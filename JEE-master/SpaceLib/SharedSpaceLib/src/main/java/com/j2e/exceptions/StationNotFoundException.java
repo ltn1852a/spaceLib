@@ -10,5 +10,9 @@ package com.j2e.exceptions;
  * @author maha-
  */
 public class StationNotFoundException extends Exception {
+
+    public StationNotFoundException() {
+        super("station introuvable");
+    }
     
 }

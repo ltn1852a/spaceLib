@@ -10,5 +10,9 @@ package com.j2e.exceptions;
  * @author maha-
  */
 public class VoyageAlreadyFinishedException extends Exception {
+
+    public VoyageAlreadyFinishedException() {
+        super("voyage déja finalisé");
+    }
     
 }
