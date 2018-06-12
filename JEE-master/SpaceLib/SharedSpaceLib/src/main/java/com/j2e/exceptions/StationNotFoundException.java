@@ -14,5 +14,9 @@ public class StationNotFoundException extends Exception {
     public StationNotFoundException() {
         super("station introuvable");
     }
+
+    public StationNotFoundException(String msg) {
+        super(msg);
+    }
     
 }
