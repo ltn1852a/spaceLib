@@ -26,5 +26,6 @@ public interface GestionVoyageLocal {
    public void créerCompte(String pseudo, String mdp) throws userAlreadyExistsException;
    public List<HistoVoyage> consulterHistoVoyage(Long idUsager);
    public void finaliserVoyage(Long idVoyage)throws VoyageNotFoundException, VoyageAlreadyFinishedException;
+   
 
 }

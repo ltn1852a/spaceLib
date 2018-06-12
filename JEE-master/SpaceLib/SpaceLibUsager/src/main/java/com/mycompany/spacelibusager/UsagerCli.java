@@ -42,7 +42,7 @@ public class UsagerCli {
         do {
             try{
                 showMenu();
-                choix = (int) CLIUtils.saisirEntier(scanner, "Votre choix : ", 0, 4);
+                choix = (int) CLIUtils.saisirEntier(scanner, "Votre choix : ", 0, 5);
                 switch (choix) {
                     case 1:
                         this.créerCompte();
@@ -58,6 +58,10 @@ public class UsagerCli {
                         break;
                     case 4:
                         this.consulterHistVoyage();
+                        this.askNext();
+                        break;
+                                            case 5:
+                        this.consulterStations();
                         this.askNext();
                         break;
                     case 0:
@@ -85,6 +89,7 @@ public class UsagerCli {
         System.out.println("\t1. Création Compte usager");
         System.out.println("\t2. Réserver voyage");
         System.out.println("\t3. Finaliser voyage");
+        System.out.println("\t3. Consulter la liste des stations");
         System.out.println("\t4. Consulter historique voyage");
         System.out.println("\t0. Quitter");
         }else{
@@ -119,6 +124,10 @@ public class UsagerCli {
             return false;
         }
              
+    }
+    
+    public void consulterStations(){
+        this.services.consulterListeStation();
     }
     
     public void créerCompte(){

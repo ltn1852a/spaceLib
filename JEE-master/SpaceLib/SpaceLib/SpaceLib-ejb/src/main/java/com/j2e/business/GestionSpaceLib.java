@@ -60,4 +60,9 @@ public class GestionSpaceLib implements GestionSpaceLibLocal {
         
         
     }
+
+    @Override
+    public List<Station> getSataions() {
+        return stationFacade.findAll();
+    }
 }
