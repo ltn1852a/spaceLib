@@ -6,6 +6,9 @@
 package com.j2e.repositories;
 
 import com.j2e.entities.Navette;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,8 +33,31 @@ public class NavetteFacade extends AbstractFacade<Navette> implements NavetteFac
     }
 
     @Override
-    public Navette findNavetteDispo(int nbVoyagers) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Navette findNavetteDispo(int nbVoyagers, int idStation) {
+        List<Navette> listNavettes = this.findAll();
+        List<Navette> listNavettesDispo = new ArrayList<Navette>();
+        Iterator<Navette> listNavettesIterator = listNavettes.iterator();
+        while (listNavettesIterator.hasNext()) {
+            Navette n = listNavettesIterator.next();
+            if (n.getQuai().getStation().getId() == idStation && n.getNbPLaces() >= nbVoyagers && n.getNbVoyages() < 3){
+                return n;
+            }
+        }
+        return null;
+    }
+    
+    @Override
+    public List<Navette> findNavetteAReviser(int idStation) {
+        List<Navette> listNavettes = this.findAll();
+        List<Navette> listNavettesAReviser = new ArrayList<Navette>();
+        Iterator<Navette> listNavettesIterator = listNavettes.iterator();
+        while (listNavettesIterator.hasNext()) {
+            Navette n = listNavettesIterator.next();
+            if (n.getQuai().getStation().getId() == idStation && n.getNbVoyages() == 3){
+                listNavettesAReviser.add(n);
+            }
+        }
+        return listNavettesAReviser;
     }
     
 }

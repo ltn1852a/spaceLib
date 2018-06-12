@@ -30,6 +30,8 @@ public interface NavetteFacadeLocal {
 
     int count();
     
-    public Navette findNavetteDispo(int nbVoyagers);
+    public Navette findNavetteDispo(int nbVoyagers, int idStation);
+    
+    public List<Navette> findNavetteAReviser(int idStation);
     
 }
