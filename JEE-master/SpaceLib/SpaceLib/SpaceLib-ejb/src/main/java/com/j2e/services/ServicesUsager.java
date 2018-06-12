@@ -39,8 +39,7 @@ public class ServicesUsager implements ServicesUsagerRemote {
     private GestionSpaceLibLocal gestionSpaceLib;
     
     @EJB
-    private GestionVoyageLocal gestionVoyage;
-    
+    private GestionVoyageLocal gestionVoyage;    
  
 
     @Override
@@ -69,8 +68,7 @@ public class ServicesUsager implements ServicesUsagerRemote {
       return this.gestionVoyage.consulterHistoVoyage(idVoyage);
     }
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+
 
     @Override
     public void réserverVoyage(Long idUsager, int nbVoyage, Long stationDepart, Long stationArriv) throws navettesNotAvailableException, quaisNotAvailableException {
