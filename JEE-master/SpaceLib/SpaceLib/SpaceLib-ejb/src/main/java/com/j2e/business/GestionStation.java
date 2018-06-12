@@ -12,6 +12,7 @@ import com.j2e.entities.Station;
 import com.j2e.exceptions.NavetteNotfoundException;
 import com.j2e.exceptions.StationNotFoundException;
 import com.j2e.exceptions.userNotFoundException;
+import com.j2e.repositories.HistoNavetteFacadeLocal;
 import com.j2e.repositories.MecanicienFacadeLocal;
 import com.j2e.repositories.NavetteFacadeLocal;
 import com.j2e.repositories.StationFacadeLocal;
@@ -32,6 +33,9 @@ public class GestionStation implements GestionStationLocal {
     @EJB
     private NavetteFacadeLocal navetteFacade;
     
+    @EJB
+    private HistoNavetteFacadeLocal histoNavFacade;
+        
     @EJB
     private StationFacadeLocal stationFacade;    
 
@@ -73,6 +77,7 @@ public class GestionStation implements GestionStationLocal {
             n.setDisponible(false);
             //ajouter historique navette
             HistoNavette hn = new HistoNavette(n, "Debut revision navette numéro "+n.getId().toString());
+            histoNavFacade.create(hn);
         }
     }
 

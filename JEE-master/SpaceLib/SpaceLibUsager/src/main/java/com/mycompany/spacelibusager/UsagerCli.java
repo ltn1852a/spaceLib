@@ -11,6 +11,7 @@ import com.j2e.exceptions.VoyageAlreadyFinishedException;
 import com.j2e.exceptions.VoyageNotFoundException;
 import com.j2e.exceptions.navettesNotAvailableException;
 import com.j2e.exceptions.quaisNotAvailableException;
+import com.j2e.exceptions.reservationNotFoundException;
 import com.j2e.exceptions.userAlreadyExistsException;
 import com.j2e.exceptions.userNotFoundException;
 import com.j2e.services.ServicesUsagerRemote;
@@ -21,6 +22,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJBException;
 
 /**
@@ -60,8 +63,12 @@ public class UsagerCli {
                         this.consulterHistVoyage();
                         this.askNext();
                         break;
-                                            case 5:
+                    case 5:
                         this.consulterStations();
+                        this.askNext();
+                        break;
+                    case 6:
+                        this.cloturerResa();
                         this.askNext();
                         break;
                     case 0:
@@ -90,13 +97,13 @@ public class UsagerCli {
         System.out.println("\t2. Réserver voyage");
         System.out.println("\t3. Finaliser voyage");
         System.out.println("\t3. Consulter la liste des stations");
+        System.out.println("\t3. Cloturer réservation");
         System.out.println("\t4. Consulter historique voyage");
         System.out.println("\t0. Quitter");
         }else{
             System.out.println("Vous avez échoué de vous identifier, si vous possédez pas de compte, merci d'en créer un");
             this.créerCompte();
-            this.askNext();
-            
+            this.askNext();            
         }
     }    
      
@@ -180,6 +187,16 @@ public class UsagerCli {
     private void afficherHistorique(ArrayList<HistoVoyage> HistoVoyage){
         for(int i=0; i< HistoVoyage.size();i++){
             System.out.println(HistoVoyage.get(i).toStringHistoVoyage());
+        }
+    }
+
+    private void cloturerResa() {
+        
+        Long idResa = CLIUtils.saisirEntier(scanner, "Entrez l' id de la réservation que vous souhaitez cloturer : ");
+        try {
+            services.cloturerRéservation(idResa);
+        } catch (reservationNotFoundException ex) {
+            Logger.getLogger(UsagerCli.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
