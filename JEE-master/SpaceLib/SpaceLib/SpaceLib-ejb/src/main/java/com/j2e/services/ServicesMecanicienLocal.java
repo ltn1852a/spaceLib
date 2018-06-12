@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.j2e.business;
+package com.j2e.services;
 
 import com.j2e.exceptions.NavetteNotfoundException;
 import com.j2e.exceptions.StationNotFoundException;
@@ -12,14 +12,11 @@ import javax.ejb.Local;
 
 /**
  *
- * @author ben
+ * @author maha-
  */
 @Local
-public interface GestionStationLocal {
-    
-    public void consulterListeNavetteAReviser(Integer idMecanicien);
+public interface ServicesMecanicienLocal {
     public void renseignerStationRattachement(Long idMecanicien, Long idStation)throws userNotFoundException, StationNotFoundException;
     public void annoncerDebutRevision(Long idNavette) throws NavetteNotfoundException;
     public void annoncerFinRevision(Long idNavette) throws NavetteNotfoundException;
-    
 }
