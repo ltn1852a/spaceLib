@@ -21,7 +21,7 @@ import javax.ejb.Local;
  */
 @Local
 public interface GestionVoyageLocal {
-     public void réserverVoyage(int idUsaager, int nbVoyages, int idStationDepart, int idstationArriv )throws navettesNotAvailableException, quaisNotAvailableException;
+     public void réserverVoyage(Long idUsaager, int nbVoyages, Long idStationDepart, Long idstationArriv )throws navettesNotAvailableException, quaisNotAvailableException;
 
    public Long identifierUsager(String pseudo, String mdp)throws userNotFoundException, PwdIncorrectException;
    public void créerCompte(String pseudo, String mdp) throws userAlreadyExistsException;

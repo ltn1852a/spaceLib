@@ -72,7 +72,7 @@ public class ServicesUsager implements ServicesUsagerRemote {
 
     @Override
     public void réserverVoyage(Long idUsager, int nbVoyage, Long stationDepart, Long stationArriv) throws navettesNotAvailableException, quaisNotAvailableException {
-        this.gestionVoyage.réserverVoyage(nbVoyage, nbVoyage, nbVoyage, nbVoyage);
+        this.gestionVoyage.réserverVoyage(idUsager, nbVoyage, stationDepart, stationArriv);
     }
 
     @Override

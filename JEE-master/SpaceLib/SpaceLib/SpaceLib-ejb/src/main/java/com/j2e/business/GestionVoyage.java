@@ -71,7 +71,7 @@ public class GestionVoyage implements GestionVoyageLocal {
     private ReservationFacadeLocal resaFacade;
 
     @Override
-    public void réserverVoyage(int idUsager, int nbVoyageurs, int idStationDepart, int idStationArriv) throws navettesNotAvailableException,quaisNotAvailableException{
+    public void réserverVoyage(Long idUsager, int nbVoyageurs, Long idStationDepart, Long idStationArriv) throws navettesNotAvailableException,quaisNotAvailableException{
         
         //chercher une navette dispo ayant des places >= au nbVoyagers demandé
         
