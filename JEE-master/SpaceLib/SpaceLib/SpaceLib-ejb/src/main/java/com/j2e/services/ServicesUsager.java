@@ -9,6 +9,7 @@ package com.j2e.services;
 
 import com.j2e.business.GestionSpaceLibLocal;
 import com.j2e.business.GestionVoyageLocal;
+import com.j2e.entities.Station;
 
 import com.j2e.exceptions.VoyageAlreadyFinishedException;
 
@@ -18,6 +19,7 @@ import com.j2e.exceptions.navettesNotAvailableException;
 import com.j2e.exceptions.quaisNotAvailableException;
 import com.j2e.exceptions.userAlreadyExistsException;
 import com.j2e.exceptions.userNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -72,6 +74,16 @@ public class ServicesUsager implements ServicesUsagerRemote {
     @Override
     public void réserverVoyage(Long idUsager, int nbVoyage, Long stationDepart, Long stationArriv) throws navettesNotAvailableException, quaisNotAvailableException {
         this.gestionVoyage.réserverVoyage(nbVoyage, nbVoyage, nbVoyage, nbVoyage);
+    }
+
+    @Override
+    public void consulterListeStation() {
+        List<Station> stats= this.gestionSpaceLib.getSataions();
+        if(stats.size()>0){
+            for(int i=0; i<stats.size() ;i++){
+                System.out.println(stats.get(i).toString());
+            }
+        }
     }
 
 
