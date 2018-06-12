@@ -126,7 +126,7 @@ public class UsagerCli {
               this.services.identifierUsager(pseudo, mdp);
               //identification faite avec succès
               return true;
-        }catch(userNotFoundException |  PwdIncorrectException ex){            
+        }catch(Exception ex){            
             System.out.println("Erreur : " + ex.getMessage());
             return false;
         }
