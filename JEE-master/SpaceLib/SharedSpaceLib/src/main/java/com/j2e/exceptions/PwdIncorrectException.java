@@ -11,7 +11,7 @@ package com.j2e.exceptions;
  */
 public class PwdIncorrectException extends Exception{
     public PwdIncorrectException(){
-		
+		super("mdp incorrect");
 	}
 
 }
