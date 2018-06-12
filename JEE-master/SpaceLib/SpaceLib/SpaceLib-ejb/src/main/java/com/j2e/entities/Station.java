@@ -231,7 +231,7 @@ public class Station implements Serializable {
         return id;
     }
 
-    public Station(List<Quai> quais, List<Mecanicien> mecaniciens, String loc) {
+    public Station(String loc) {
         this.quais = new ArrayList<Quai>();
         this.mecaniciens = new ArrayList<Mecanicien>();
         this.location= loc;

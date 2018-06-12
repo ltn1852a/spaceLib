@@ -36,7 +36,7 @@ public class GestionSpaceLib implements GestionSpaceLibLocal {
 
     @Override
     public void créerStation(List<Integer> nbPlaces, String loc) {
-        Station s = new Station(new ArrayList<Quai>(),new ArrayList<Mecanicien>(),loc);
+        Station s = new Station(loc);
         stationFacade.create(s);
         Iterator<Integer> nbPlacesIterator = nbPlaces.iterator();
         while (nbPlacesIterator.hasNext()) {
