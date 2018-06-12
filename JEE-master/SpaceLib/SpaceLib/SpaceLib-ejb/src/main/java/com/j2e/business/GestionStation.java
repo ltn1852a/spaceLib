@@ -36,7 +36,7 @@ public class GestionStation implements GestionStationLocal {
     private StationFacadeLocal stationFacade;    
 
     @Override
-    public void consulterListeNavetteAReviser(Integer idMecanicien) {
+    public void consulterListeNavetteAReviser(Long idMecanicien) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -17,7 +17,7 @@ import javax.ejb.Local;
 @Local
 public interface GestionStationLocal {
     
-    public void consulterListeNavetteAReviser(Integer idMecanicien);
+    public void consulterListeNavetteAReviser(Long idMecanicien);
     public void renseignerStationRattachement(Long idMecanicien, Long idStation)throws userNotFoundException, StationNotFoundException;
     public void annoncerDebutRevision(Long idNavette) throws NavetteNotfoundException;
     public void annoncerFinRevision(Long idNavette) throws NavetteNotfoundException;
