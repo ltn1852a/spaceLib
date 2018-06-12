@@ -143,7 +143,7 @@ public class UsagerCli {
                 try{
               this.services.créerCompte(pseudo, mdp);
               
-        }catch(userAlreadyExistsException ex){            
+        }catch(Exception ex){            
             System.out.println("Erreur : " + ex.getMessage());
         }
     }
@@ -152,7 +152,7 @@ public class UsagerCli {
         final Long idVoyage = CLIUtils.saisirEntier(scanner, "Entrez l identifiant du voyage que vous souhaitez finaliser : ");
         try{
             services.finaliserVoyage(idVoyage);
-        }catch(VoyageNotFoundException | VoyageAlreadyFinishedException ex){
+        }catch(Exception ex){
             System.out.println("Erreur : " + ex.getMessage());
             
         }
@@ -167,7 +167,7 @@ public class UsagerCli {
         Long stationArriv= CLIUtils.saisirEntier(scanner, "Entrez l id de la station d'arrivéer: ");
         try{
             services.réserverVoyage(idUsager, nbVoyage, stationDepart, stationArriv);
-        }catch(navettesNotAvailableException | quaisNotAvailableException ex){
+        }catch(Exception ex){
             System.out.println("Erreur : " + ex.getMessage()); 
         }
     }
@@ -178,7 +178,7 @@ public class UsagerCli {
         try{
            ArrayList hist = (ArrayList) services.consulterHistVoyage(idUser);
            afficherHistorique(hist);
-        }catch(VoyageNotFoundException ex){            
+        }catch(Exception ex){            
             System.out.println("Erreur : " + ex.getMessage()); 
         }
         
