@@ -9,6 +9,7 @@ import com.j2e.entities.Quai;
 import com.j2e.entities.Station;
 import com.j2e.entities.HistoNavette;
 import com.j2e.entities.Navette;
+import com.j2e.entities.Reservation;
 import com.j2e.entities.Usager;
 
 
@@ -21,6 +22,7 @@ import com.j2e.exceptions.VoyageAlreadyFinishedException;
 import com.j2e.exceptions.VoyageNotFoundException;
 import com.j2e.exceptions.navettesNotAvailableException;
 import com.j2e.exceptions.quaisNotAvailableException;
+import com.j2e.exceptions.reservationNotFoundException;
 import com.j2e.exceptions.userAlreadyExistsException;
 import com.j2e.exceptions.userNotFoundException;
 import com.j2e.repositories.HistoNavetteFacadeLocal;
@@ -32,6 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import com.j2e.repositories.NavetteFacadeLocal;
+import com.j2e.repositories.ReservationFacadeLocal;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -43,7 +46,7 @@ import javax.ejb.Stateless;
 @Stateless
 public class GestionVoyage implements GestionVoyageLocal {
 
-        @EJB
+    @EJB
     private UsagerFacadeLocal usagerFacade;
     
     @EJB
@@ -63,7 +66,9 @@ public class GestionVoyage implements GestionVoyageLocal {
     
     @EJB
     private HistoNavetteFacadeLocal histoNavette;
-            
+     
+    @EJB
+    private ReservationFacadeLocal resaFacade;
 
     @Override
     public void réserverVoyage(int idUsager, int nbVoyageurs, int idStationDepart, int idStationArriv) throws navettesNotAvailableException,quaisNotAvailableException{
@@ -203,6 +208,17 @@ public class GestionVoyage implements GestionVoyageLocal {
 
         } else {
             usagerFacade.créerCompteUsager(pseudo, mdp);
+        }
+    }
+
+    @Override
+    public void cloturerRéservation(Long idResa) throws reservationNotFoundException {
+        Reservation r = resaFacade.find(idResa);
+        if(r==null){
+            throw new reservationNotFoundException("Réservation introuvable");
+        }else{
+            r.setCloture(true);
+            resaFacade.create(r);
         }
     }
 }

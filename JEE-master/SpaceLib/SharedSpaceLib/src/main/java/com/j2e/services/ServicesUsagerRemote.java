@@ -11,6 +11,7 @@ import com.j2e.exceptions.PwdIncorrectException;
 import com.j2e.exceptions.VoyageNotFoundException;
 import com.j2e.exceptions.navettesNotAvailableException;
 import com.j2e.exceptions.quaisNotAvailableException;
+import com.j2e.exceptions.reservationNotFoundException;
 import com.j2e.exceptions.userAlreadyExistsException;
 import com.j2e.exceptions.userNotFoundException;
 import java.util.List;
@@ -27,6 +28,6 @@ public interface ServicesUsagerRemote {
     public void réserverVoyage(Long idUsager,int nbVoyage, Long stationDepart, Long stationArriv)throws navettesNotAvailableException,quaisNotAvailableException;
     public void finaliserVoyage(Long idVoyage) throws VoyageNotFoundException, VoyageAlreadyFinishedException;
     public List<com.j2e.business.HistoVoyage> consulterHistVoyage(Long idUsager) throws VoyageNotFoundException;
-    public void consulterListeStation();
-   
+    public void consulterListeStation();    
+    public void cloturerRéservation(Long idResa) throws reservationNotFoundException ;   
 }

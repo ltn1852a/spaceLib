@@ -17,6 +17,7 @@ import com.j2e.exceptions.PwdIncorrectException;
 import com.j2e.exceptions.VoyageNotFoundException;
 import com.j2e.exceptions.navettesNotAvailableException;
 import com.j2e.exceptions.quaisNotAvailableException;
+import com.j2e.exceptions.reservationNotFoundException;
 import com.j2e.exceptions.userAlreadyExistsException;
 import com.j2e.exceptions.userNotFoundException;
 import java.util.ArrayList;
@@ -84,6 +85,11 @@ public class ServicesUsager implements ServicesUsagerRemote {
                 System.out.println(stats.get(i).toString());
             }
         }
+    }
+
+    @Override
+    public void cloturerRéservation(Long idResa) throws reservationNotFoundException {
+        gestionVoyage.cloturerRéservation(idResa);
     }
 
 
