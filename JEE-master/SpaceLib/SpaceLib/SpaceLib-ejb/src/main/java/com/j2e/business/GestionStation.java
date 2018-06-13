@@ -39,12 +39,14 @@ public class GestionStation implements GestionStationLocal {
     @EJB
     private StationFacadeLocal stationFacade;    
 
+    // TODO
+    // fournis la liste des navette à reviser selon l'idmecanicien fournis (sa station de rattachement) 
     @Override
     public void consulterListeNavetteAReviser(Long idMecanicien) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-
+    // verif que idstation corespond bien à la station de rattachement du mecaniscien correspondant à l'id fournis
     @Override
     public void renseignerStationRattachement(Long idMecanicien, Long idStation)throws userNotFoundException, StationNotFoundException{
         //find mecanicien as a user
@@ -67,6 +69,7 @@ public class GestionStation implements GestionStationLocal {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
+    //annonce le debut de revision de la navette correspondante à l'idNavette fournis
     @Override
     public void annoncerDebutRevision(Long idNavette) throws NavetteNotfoundException {
         //vérifier si la navette existe
@@ -81,6 +84,7 @@ public class GestionStation implements GestionStationLocal {
         }
     }
 
+    //annonce la fin de revision de la navette correspondante à l'idNavette fournis
     @Override
     public void annoncerFinRevision(Long idNavette) throws NavetteNotfoundException {        
        //vérifier si la navette existe

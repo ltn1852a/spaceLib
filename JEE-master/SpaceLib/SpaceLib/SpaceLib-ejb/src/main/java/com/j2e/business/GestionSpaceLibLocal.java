@@ -15,7 +15,14 @@ import javax.ejb.Local;
  */
 @Local
 public interface GestionSpaceLibLocal {
+    
+    // cree une station pour la location location fournis
+    // la list represente les nombres de places de chaque navette
+    // le nombre de navette est créé
+    // le nombre de quai créé représente le double du nombre de navette
+    // les navettes sont affectés aux quais affectés à la station
     public void créerStation(List<Integer> nbPlaces, String loc );
+    
     public List<Station> getSataions();
     
 }

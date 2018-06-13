@@ -34,23 +34,34 @@ public class GestionSpaceLib implements GestionSpaceLibLocal {
     @EJB
     private NavetteFacadeLocal navetteFacade;
 
+    // cree une station pour la location location fournis
+    // la list represente les nombres de places de chaque navette
+    // le nombre de navette est créé
+    // le nombre de quai créé représente le double du nombre de navette
+    // les navettes sont affectés aux quais affectés à la station
     @Override
     public void créerStation(List<Integer> nbPlaces, String loc) {
+        // cree la station
         Station s = new Station(loc);
         stationFacade.create(s);
+        // pour chaque nb place de navette renseigné
         Iterator<Integer> nbPlacesIterator = nbPlaces.iterator();
         while (nbPlacesIterator.hasNext()) {
+            //creation de navette
             Integer nbPlace = nbPlacesIterator.next();
             Navette n = new Navette(nbPlace);
             navetteFacade.create(n);
+            // creation quai et affectation navette/quai
             Quai q1 = new Quai(s);
             quaiFacade.create(q1);
             q1.setNavette(n);
             quaiFacade.edit(q1);
             n.setQuai(q1);
             navetteFacade.edit(n);
+            // creation quai sup 
             Quai q2 = new Quai(s);
             quaiFacade.create(q2);
+            // affectation quai/station
             s.addQuai(q1);
             stationFacade.edit(s);
             s.addQuai(q2);

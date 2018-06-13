@@ -12,3 +12,5 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\yannl\Desktop\J2EV3\spaceLib
 Chargeur de classe de la base de données démarré - derby.database.classpath = ''
+----------------------------------------------------------------
+Wed Jun 13 11:38:17 CEST 2018 : fermeture du moteur Derby
