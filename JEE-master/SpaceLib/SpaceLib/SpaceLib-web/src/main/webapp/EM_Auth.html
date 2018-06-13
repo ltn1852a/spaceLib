@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SPACELIB</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+
+  <body>
+  
+	<div>
+
+	<nav class="navbar navbar-default">
+		<a class="navbar-brand">SPACELIB - Espace mecanicien - authentification</a>
+	</nav>
+
+    <div class="container">
+
+        <div class="row">
+		
+			<div class="col-sm-4">
+                <div class="panel panel-default" >
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Bienvenue mécanicien
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Vous voici dans l'espace mécanicien - authentification</li>
+							<li>Veuillez vous authentifié</li>
+							<li>Etape 1 : Renseigner vos idendantifiant, mot de passe et station de rattachement</li>
+							<li>Etape 2 : Se connecter</li>
+							<li>Vous serrez ensuite redirigé vers l'écran de choix de la révision si aucune révision en cours ne vous concerne ou vers l'écran de cloture de révision dans le cas contraire</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+			
+            <div class="col-sm-8">
+                <h4 class="page-header" style="margin-top: 10px;">Authentification</h4>
+                <form role="form">
+					<form>
+						<div class="form-group">
+							<label for="loginInput">Login</label>
+							<input type="text" class="form-control" id="loginInput" placeholder="Login">
+						</div>
+						<div class="form-group">
+							<label for="mdpInput">Mot de passe</label>
+							<input type="text" class="form-control" id="mdpInput" placeholder="Mot de passe">
+						</div>
+						<div class="form-group">
+							<label for="ratachSelect">Station de ratachement</label>
+							<select class="form-control" id="ratachSelect">
+								<option>bla1</option>
+								<option>bla2</option>
+								<option>bla3</option>
+								<option>bla4</option>
+							 </select>
+						</div>
+						<div class="form-group">
+							<button type="button" class="btn btn-success form-control" id="conButton">Connexion</button>
+						</div>
+					</form>
+                </form>
+
+				<div class="alert alert-success" role="alert" id="succesAlertDiv" style="display:none" > 
+					<form role="form">
+						<div class="form-group float-label-control label-bottom">
+							Opération de « début de révision » est enregistrée. Vous trouverez la navette quai numéro : <span id="numeroQuaiSpan">X</span>
+						</div>
+						<button type="button" class="btn btn-success form-control" id="suivantButton">Suivant</button>
+					</form>
+				</div>
+            </div>
+
+        </div>
+
+    </div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+		
+			$(".navetteRevA").click(function(){
+				if ( $(this).hasClass("disabled")) {
+					return false;
+				} 
+			
+				//enregistrement revision
+			
+				$(".navetteRevA").addClass("disabled");
+				$(this).addClass("active");
+				$("#succesAlertDiv").css("display","");
+
+			});
+
+			$("#conButton").click(function(){
+				window.location.href = "EM_ChoixRev.html"
+			});
+
+		});
+	</script>
+
+  </body>
+</html>

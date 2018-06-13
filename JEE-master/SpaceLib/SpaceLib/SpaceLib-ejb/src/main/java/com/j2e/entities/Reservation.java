@@ -36,15 +36,7 @@ public class Reservation implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Date dateResa;
-    private boolean cloture=false;
-
-    public boolean getCloture() {
-        return cloture;
-    }
-
-    public void setCloture(boolean etat) {
-        this.cloture = etat;
-    }
+   
 
     public Long getIdUsager() {
         return idUsager;

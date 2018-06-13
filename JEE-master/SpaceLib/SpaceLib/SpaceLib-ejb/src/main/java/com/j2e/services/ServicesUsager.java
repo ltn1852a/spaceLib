@@ -39,8 +39,7 @@ public class ServicesUsager implements ServicesUsagerRemote {
     private GestionSpaceLibLocal gestionSpaceLib;
     
     @EJB
-    private GestionVoyageLocal gestionVoyage;
-    
+    private GestionVoyageLocal gestionVoyage;    
  
 
     @Override
@@ -69,22 +68,23 @@ public class ServicesUsager implements ServicesUsagerRemote {
       return this.gestionVoyage.consulterHistoVoyage(idVoyage);
     }
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+
 
     @Override
     public void réserverVoyage(Long idUsager, int nbVoyage, Long stationDepart, Long stationArriv) throws navettesNotAvailableException, quaisNotAvailableException {
-        this.gestionVoyage.réserverVoyage(nbVoyage, nbVoyage, nbVoyage, nbVoyage);
+        this.gestionVoyage.réserverVoyage(idUsager, nbVoyage, stationDepart, stationArriv);
     }
 
     @Override
-    public void consulterListeStation() {
+    public List<String> consulterListeStation() {
         List<Station> stats= this.gestionSpaceLib.getSataions();
+        List<String> listStation=new ArrayList<>();
         if(stats.size()>0){
             for(int i=0; i<stats.size() ;i++){
-                System.out.println(stats.get(i).toString());
+                listStation.add(stats.get(i).toString());
             }
         }
+        return listStation;
     }
 
     @Override

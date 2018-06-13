@@ -263,7 +263,7 @@ public class Station implements Serializable {
 
     @Override
     public String toString() {
-        return "com.j2e.entities.Station[ id=" + id + " ]";
+        return "com.j2e.entities.Station[ id=" + id + " nom de ls station : "+ nomStation+"]";
     }
     
 }

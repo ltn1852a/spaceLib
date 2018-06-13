@@ -5,12 +5,17 @@
  */
 package com.j2e.business;
 
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 /**
  *
  * @author yannl
  */
 public class HistoVoyage {
     private Long voyage;
+    
 
     public Long getVoyage() {
         return voyage;

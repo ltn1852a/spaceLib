@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SPACELIB</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+
+  <body>
+  
+	<div>
+
+	<nav class="navbar navbar-default">
+		<a class="navbar-brand">SPACELIB - Espace mecanicien - choix de la révision</a>
+	</nav>
+
+    <div class="container">
+
+        <div class="row">
+		
+			<div class="col-sm-4">
+                <div class="panel panel-default" >
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Bienvenue mecanicien
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Vous voici dans l'espace mécanicien - choix de la revision</li>
+							<li>Aucune révision n'est en cours</li>
+                            <li>Ici vous trouverez donc la liste des navettes à quai qui nécessitent une révision dans la station de rattachement renseigné</li>
+							<li>Etape 1 : Selectionner une navette à réviser</li>
+							<li>Etape 2 : Récuperer le numéro de quai</li>
+							<li>Vous serrez ensuite redirigé vers l'écran de cloture de révision</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+			
+            <div class="col-sm-8">
+                <h4 class="page-header" style="margin-top: 10px;">Selection de la navette à réviser</h4>
+                <form role="form">
+                    <div class="form-group float-label-control">
+                        <label for="">Liste des navettes à reviser</label>
+                    </div>
+					<div class="list-group" id="listeNavetteRevDiv" style="cursor:pointer">
+						<a class="navetteRevA list-group-item list-group-item-action">1023124</a>
+						<a class="navetteRevA list-group-item list-group-item-action">1023124</a>
+						<a class="navetteRevA list-group-item list-group-item-action">1023124</a>
+						<a class="navetteRevA list-group-item list-group-item-action">1023124</a>
+						<a class="navetteRevA list-group-item list-group-item-action">1023124</a>
+					</div>
+                </form>
+
+				<div class="alert alert-success" role="alert" id="succesAlertDiv" style="display:none" > 
+					<form role="form">
+						<div class="form-group float-label-control label-bottom">
+							Opération de « début de révision » est enregistrée. Vous trouverez la navette quai numéro : <span id="numeroQuaiSpan">X</span>
+						</div>
+						<button type="button" class="btn btn-success form-control" id="suivantButton">Suivant</button>
+					</form>
+				</div>
+            </div>
+
+        </div>
+
+    </div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+		
+			$(".navetteRevA").click(function(){
+				if ( $(this).hasClass("disabled")) {
+					return false;
+				} 
+			
+				//enregistrement revision
+			
+				$(".navetteRevA").addClass("disabled");
+				$(this).addClass("active");
+				$("#succesAlertDiv").css("display","");
+
+			});
+
+			$("#suivantButton").click(function(){
+				window.location.href = "EM_ClotureRev.html"
+			});
+
+		});
+	</script>
+
+  </body>
+</html>

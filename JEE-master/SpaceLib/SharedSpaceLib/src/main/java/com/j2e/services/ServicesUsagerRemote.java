@@ -28,6 +28,6 @@ public interface ServicesUsagerRemote {
     public void réserverVoyage(Long idUsager,int nbVoyage, Long stationDepart, Long stationArriv)throws navettesNotAvailableException,quaisNotAvailableException;
     public void finaliserVoyage(Long idVoyage) throws VoyageNotFoundException, VoyageAlreadyFinishedException;
     public List<com.j2e.business.HistoVoyage> consulterHistVoyage(Long idUsager) throws VoyageNotFoundException;
-    public void consulterListeStation();    
+    public List<String> consulterListeStation();    
     public void cloturerRéservation(Long idResa) throws reservationNotFoundException ;   
 }

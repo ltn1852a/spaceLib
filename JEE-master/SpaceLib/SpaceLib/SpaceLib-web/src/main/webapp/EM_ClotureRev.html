@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SPACELIB</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+
+  <body>
+  
+	<div>
+
+	<nav class="navbar navbar-default">
+		<a class="navbar-brand">SPACELIB - Espace mecanicien - choix de la révision</a>
+	</nav>
+
+    <div class="container">
+
+        <div class="row">
+		
+			<div class="col-sm-4">
+                <div class="panel panel-default" >
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Bienvenue mecanicien
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Vous voici dans l'espace mécanicien - cloture de la revision.</li>
+							<li>Une révision en cours attend d'être cloturé.</li>
+							<li>Etape 1 : Cloturer.</li>
+							<li>Vous serrez ensuite redirigé vers l'écran de choix de la prochaine révision.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+			
+            <div class="col-sm-8">
+                <h4 class="page-header" style="margin-top: 10px;">Selection de la navette à réviser</h4>
+				
+				<form role="form">
+					<div class="form-group float-label-control label-bottom">
+						<button type="button" class="btn btn-success form-control" id="cloturerButton">Cloturer la révision</button>
+					</div>
+				</form>
+                
+				<div class="alert alert-success" role="alert" id="succesAlertDiv" style="display:none" > 
+					<form role="form">
+						<div class="form-group float-label-control label-bottom">
+							Opération de « fin de révision » est enregistrée. Beau travail.
+						</div>
+						<button type="button" class="btn btn-success form-control" id="suivantButton">Suivant</button>
+					</form>
+				</div>
+				
+				<div class="alert alert-danger" role="alert" id="dangerAlertDiv" style="display:none" > 
+					<form role="form">
+						<div class="form-group float-label-control label-bottom">
+							Erreur de saisie
+						</div>
+					</form>
+				</div>
+				
+            </div>
+
+        </div>
+
+    </div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+		
+			$("#cloturerButton").click(function(){
+				$("#cloturerButton").prop("disabled",true);
+				$(this).addClass("active");
+				$("#succesAlertDiv").css("display","");
+			});
+
+			$("#suivantButton").click(function(){
+				window.location.href = "www.google.com" 
+			});
+
+		});
+	</script>
+
+  </body>
+</html>

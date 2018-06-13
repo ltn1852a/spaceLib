@@ -20,6 +20,7 @@ import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -35,6 +36,7 @@ public class UsagerCli {
     private final ServicesUsagerRemote services;
     private final Scanner scanner = new Scanner(System.in);
     private final DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY' à 'HH:mm");
+    boolean identifier =false;
     
         public UsagerCli(ServicesUsagerRemote services) {
         this.services = services;
@@ -90,21 +92,30 @@ public class UsagerCli {
         
         private void showMenu() {
             //identification
-        CLIUtils.afficherTitreSection("Menu d'identification");
-        if(this.identifierUsager()){
+        
+        if(!identifier){
+            CLIUtils.afficherTitreSection("Menu d'identification");
+            try{
+            identifierUsager();
+            }catch(Exception e){
+            System.out.println("Vous avez échoué de vous identifier, si vous possédez pas de compte, merci d'en créer un");
+            this.créerCompte();
+            this.askNext();            
+        
+            }
+        }
+       if(identifier){
         CLIUtils.afficherTitreSection("Menu de séléction");
         System.out.println("\t1. Création Compte usager");
         System.out.println("\t2. Réserver voyage");
         System.out.println("\t3. Finaliser voyage");
-        System.out.println("\t3. Consulter la liste des stations");
-        System.out.println("\t3. Cloturer réservation");
         System.out.println("\t4. Consulter historique voyage");
+        System.out.println("\t5. Consulter la liste des stations");
+        System.out.println("\t6. Cloturer réservation");     
         System.out.println("\t0. Quitter");
-        }else{
-            System.out.println("Vous avez échoué de vous identifier, si vous possédez pas de compte, merci d'en créer un");
-            this.créerCompte();
-            this.askNext();            
-        }
+       }
+        
+        
     }    
      
     private void quitter() {
@@ -124,6 +135,7 @@ public class UsagerCli {
         
         try{
               this.services.identifierUsager(pseudo, mdp);
+              identifier=true;
               //identification faite avec succès
               return true;
         }catch(Exception ex){            
@@ -134,7 +146,10 @@ public class UsagerCli {
     }
     
     public void consulterStations(){
-        this.services.consulterListeStation();
+        List<String> listStation=this.services.consulterListeStation();
+        for(String s :listStation){
+            System.out.println(s);
+        }
     }
     
     public void créerCompte(){
@@ -143,7 +158,7 @@ public class UsagerCli {
                 try{
               this.services.créerCompte(pseudo, mdp);
               
-        }catch(Exception ex){            
+        }catch(userAlreadyExistsException ex){            
             System.out.println("Erreur : " + ex.getMessage());
         }
     }
@@ -152,7 +167,7 @@ public class UsagerCli {
         final Long idVoyage = CLIUtils.saisirEntier(scanner, "Entrez l identifiant du voyage que vous souhaitez finaliser : ");
         try{
             services.finaliserVoyage(idVoyage);
-        }catch(Exception ex){
+        }catch(VoyageNotFoundException | VoyageAlreadyFinishedException ex){
             System.out.println("Erreur : " + ex.getMessage());
             
         }
@@ -167,7 +182,7 @@ public class UsagerCli {
         Long stationArriv= CLIUtils.saisirEntier(scanner, "Entrez l id de la station d'arrivéer: ");
         try{
             services.réserverVoyage(idUsager, nbVoyage, stationDepart, stationArriv);
-        }catch(Exception ex){
+        }catch(navettesNotAvailableException | quaisNotAvailableException ex){
             System.out.println("Erreur : " + ex.getMessage()); 
         }
     }
@@ -178,7 +193,7 @@ public class UsagerCli {
         try{
            ArrayList hist = (ArrayList) services.consulterHistVoyage(idUser);
            afficherHistorique(hist);
-        }catch(Exception ex){            
+        }catch(VoyageNotFoundException ex){            
             System.out.println("Erreur : " + ex.getMessage()); 
         }
         

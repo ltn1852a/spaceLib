@@ -71,7 +71,7 @@ public class GestionVoyage implements GestionVoyageLocal {
     private ReservationFacadeLocal resaFacade;
 
     @Override
-    public void réserverVoyage(int idUsager, int nbVoyageurs, int idStationDepart, int idStationArriv) throws navettesNotAvailableException,quaisNotAvailableException{
+    public void réserverVoyage(Long idUsager, int nbVoyageurs, Long idStationDepart, Long idStationArriv) throws navettesNotAvailableException,quaisNotAvailableException{
         
         //chercher une navette dispo ayant des places >= au nbVoyagers demandé
         
@@ -93,9 +93,9 @@ public class GestionVoyage implements GestionVoyageLocal {
                 c.add(Calendar.DATE, Station.tempsTrajet(sDepart,sArriv)); 
                   Date dateArrivee =c.getTime();
                   Voyage v  = new Voyage( nbVoyageurs, dateDepart,dateArrivee,  nav,sDepart, sArriv);
-                   
-                   
-                    voyageFacade.create(v);
+                  Reservation r =new Reservation(u, v);
+                  resaFacade.create(r);
+                  voyageFacade.create(v);
                     
                     //rendre le quai de depart indisponible 
                     nav.getQuai().setNavette(nav);
@@ -211,14 +211,14 @@ public class GestionVoyage implements GestionVoyageLocal {
         }
     }
 
-    @Override
+   @Override
     public void cloturerRéservation(Long idResa) throws reservationNotFoundException {
-        Reservation r = resaFacade.find(idResa);
+      /*  Reservation r = resaFacade.find(idResa);
         if(r==null){
             throw new reservationNotFoundException("Réservation introuvable");
         }else{
             r.setCloture(true);
             resaFacade.create(r);
-        }
+        }*/
     }
 }
