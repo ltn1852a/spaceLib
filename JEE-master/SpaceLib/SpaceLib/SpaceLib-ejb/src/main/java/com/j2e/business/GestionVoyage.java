@@ -94,7 +94,11 @@ public class GestionVoyage implements GestionVoyageLocal {
                   Date dateArrivee =c.getTime();
                   Voyage v  = new Voyage( nbVoyageurs, dateDepart,dateArrivee,  nav,sDepart, sArriv);
                   Reservation r =new Reservation(u, v);
+                  
+                  //ajout de reservation dans la BD
                   resaFacade.create(r);
+                  
+                  //ajout du voyage dans la BD
                   voyageFacade.create(v);
                     
                     //rendre le quai de depart indisponible 
@@ -178,6 +182,8 @@ public class GestionVoyage implements GestionVoyageLocal {
     @Override
     public List<com.j2e.business.HistoVoyage> consulterHistoVoyage(Long idUsager) {
       final List<com.j2e.business.HistoVoyage> histo;
+      
+      //chercher les historique de voyage effectué/réservépar cet utilisateur
         histo = this.histoFacade.findByUsager(idUsager);
        return histo;
     }
